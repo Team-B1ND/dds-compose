@@ -19,7 +19,7 @@ androidx-compose-compiler = "1.5.8"
 
 [libraries]
 kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
-
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
