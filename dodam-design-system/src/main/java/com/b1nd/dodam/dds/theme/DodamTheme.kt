@@ -1,21 +1,17 @@
 package com.b1nd.dodam.dds.theme
 
 import android.app.Activity
-import android.os.Build
-import android.view.View
-import android.view.WindowInsetsController
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.b1nd.dodam.dds.style.DarkColorScheme
-import com.b1nd.dodam.dds.style.LightColorScheme
+import com.b1nd.dodam.dds.style.DodamDarkColorScheme
+import com.b1nd.dodam.dds.style.DodamLightColorScheme
+import com.b1nd.dodam.dds.style.DodamTypography
 
 @Composable
 fun DodamTheme(
@@ -35,8 +31,8 @@ fun DodamTheme(
     }
 
     MaterialTheme(
-        colorScheme = if (darkTheme) DarkColorScheme else LightColorScheme,
-        typography = ,
+        colorScheme = if (darkTheme) DodamDarkColorScheme else DodamLightColorScheme,
+        typography = DodamTypography,
         content = content
     )
 }
