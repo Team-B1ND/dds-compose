@@ -7,6 +7,7 @@ versionCode = "1"
 
 # kotlin
 kotlin = "1.9.22"
+kotlinx-collections-immutable = "0.3.7"
 
 # gradle plugin
 agp = "8.2.2"
@@ -19,6 +20,7 @@ androidx-compose-compiler = "1.5.8"
 
 [libraries]
 kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "androidx-activity-compose" }
