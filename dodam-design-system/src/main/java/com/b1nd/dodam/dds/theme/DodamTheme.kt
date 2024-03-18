@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import com.b1nd.dodam.dds.style.DodamDarkColorScheme
 import com.b1nd.dodam.dds.style.DodamLightColorScheme
+import com.b1nd.dodam.dds.style.DodamShapes
 import com.b1nd.dodam.dds.style.DodamTypography
 
 @Composable
@@ -33,6 +34,7 @@ fun DodamTheme(
     MaterialTheme(
         colorScheme = if (darkTheme) DodamDarkColorScheme else DodamLightColorScheme,
         typography = DodamTypography,
+        shapes = DodamShapes,
         content = content
     )
 }
