@@ -1,6 +1,7 @@
 package com.b1nd.dodam.dds.style
 
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -10,7 +11,7 @@ import com.b1nd.dodam.dds.foundation.DodamIcons
 fun HomeIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -24,7 +25,7 @@ fun HomeIcon(
 fun ForkAndKnifeIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -38,7 +39,7 @@ fun ForkAndKnifeIcon(
 fun DoorOpenIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -52,7 +53,7 @@ fun DoorOpenIcon(
 fun CalendarIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -66,7 +67,7 @@ fun CalendarIcon(
 fun MoonPlusIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -80,7 +81,7 @@ fun MoonPlusIcon(
 fun MenuIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -94,7 +95,7 @@ fun MenuIcon(
 fun XMarkCircleIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -108,7 +109,7 @@ fun XMarkCircleIcon(
 fun ExclamationMarkCircleIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -122,7 +123,7 @@ fun ExclamationMarkCircleIcon(
 fun PlusIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -136,7 +137,7 @@ fun PlusIcon(
 fun NoteIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -150,7 +151,7 @@ fun NoteIcon(
 fun BusIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -164,7 +165,7 @@ fun BusIcon(
 fun MegaphoneIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -178,11 +179,11 @@ fun MegaphoneIcon(
 fun ArrowLeftIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
-        imageVector = DodamIcons.Bus,
+        imageVector = DodamIcons.ArrowLeft,
         contentDescription = contentDescription,
         tint = tint,
     )
@@ -192,7 +193,7 @@ fun ArrowLeftIcon(
 fun BellIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -206,7 +207,7 @@ fun BellIcon(
 fun EyeIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -220,7 +221,7 @@ fun EyeIcon(
 fun EyeSlashIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -234,7 +235,7 @@ fun EyeSlashIcon(
 fun CheckmarkCircleIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
@@ -248,7 +249,7 @@ fun CheckmarkCircleIcon(
 fun CheckmarkIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
-    tint: Color = Color.Unspecified,
+    tint: Color = LocalContentColor.current,
 ) {
     Icon(
         modifier = modifier,
