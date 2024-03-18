@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.b1nd.dodam.dds"
+    namespace = "com.b1nd.dodam.app"
     compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
@@ -52,5 +52,14 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.core)
+    implementation(libs.androidx.compose.activity)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.foundation)
+    implementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
+    implementation(project(":dodam-design-system"))
 }
