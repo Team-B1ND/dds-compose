@@ -53,6 +53,7 @@ android {
 
 dependencies {
     implementation(libs.androidx.core)
+    implementation(libs.kotlinx.collections.immutable)
     implementation(libs.androidx.compose.activity)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.material3)

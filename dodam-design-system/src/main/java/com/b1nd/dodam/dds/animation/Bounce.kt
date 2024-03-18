@@ -32,7 +32,7 @@ fun Modifier.bounceClick(
 ) = composed {
     var buttonState by remember { mutableStateOf(ButtonState.Idle) }
     val scale by animateFloatAsState(
-        if (buttonState == ButtonState.Pressed) 0.95f else 1f,
+        if (buttonState == ButtonState.Pressed) 0.9f else 1f,
         label = "",
     )
     val color by animateColorAsState(
