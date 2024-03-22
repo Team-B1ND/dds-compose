@@ -19,12 +19,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,6 +43,7 @@ import androidx.compose.ui.node.LayoutModifierNode
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
 import androidx.compose.ui.unit.Dp
@@ -240,6 +243,8 @@ private fun SegmentTransition(
     }
     CompositionLocalProvider(
         LocalContentColor provides color,
+        LocalTextStyle provides if (selected) MaterialTheme.typography.bodyLarge
+        else MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
         content = content
     )
 }
@@ -370,7 +375,7 @@ data class SegmentPosition(
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 fun DodamSegmentedButtonPreview() {
     DodamTheme {
-        var selectedTabIndex by remember { mutableStateOf(0) }
+        var selectedTabIndex by remember { mutableIntStateOf(0) }
         DodamSegmentedButtonRow(
             selectedIndex = selectedTabIndex, ) {
             DodamSegment(selected = selectedTabIndex == 0, onClick = { selectedTabIndex = 0 }) {

@@ -8,14 +8,19 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MediumTopAppBar
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.dds.component.button.DodamIconButton
@@ -30,7 +35,7 @@ import com.b1nd.dodam.dds.theme.DodamTheme
 @ExperimentalMaterial3Api
 @Composable
 fun DodamTopAppBar(
-    title: String,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     actions: @Composable RowScope.() -> Unit = {},
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
@@ -44,7 +49,13 @@ fun DodamTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     TopAppBar(
-        title = { HeadlineSmall(text = title) },
+        title = {
+            CompositionLocalProvider(
+                LocalContentColor provides colors.titleContentColor,
+                LocalTextStyle provides MaterialTheme.typography.headlineSmall,
+                content = title
+            )
+        },
         modifier = modifier,
         actions = actions,
         windowInsets = windowInsets,
@@ -56,7 +67,7 @@ fun DodamTopAppBar(
 @ExperimentalMaterial3Api
 @Composable
 fun DodamSmallTopAppBar(
-    title: String,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     onNavigationIconClick: () -> Unit,
     actions: @Composable RowScope.() -> Unit = {},
@@ -71,7 +82,14 @@ fun DodamSmallTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     TopAppBar(
-        title = { TitleMedium(text = title) },
+        title = {
+            CompositionLocalProvider(
+                LocalContentColor provides colors.titleContentColor,
+                LocalTextStyle provides MaterialTheme.typography.titleMedium
+                    .copy(fontWeight = FontWeight.SemiBold),
+                content = title
+            )
+        },
         modifier = modifier,
         navigationIcon = {
             IconButton(
@@ -90,7 +108,7 @@ fun DodamSmallTopAppBar(
 @ExperimentalMaterial3Api
 @Composable
 fun DodamMediumTopAppBar(
-    title: String,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     onNavigationIconClick: () -> Unit,
     actions: @Composable RowScope.() -> Unit = {},
@@ -105,7 +123,7 @@ fun DodamMediumTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     MediumTopAppBar(
-        title = { HeadlineSmall(text = title) },
+        title = title,
         modifier = modifier,
         navigationIcon = {
             IconButton(
@@ -124,7 +142,7 @@ fun DodamMediumTopAppBar(
 @ExperimentalMaterial3Api
 @Composable
 fun DodamLargeTopAppBar(
-    title: String,
+    title: @Composable () -> Unit,
     modifier: Modifier = Modifier,
     onNavigationIconClick: () -> Unit,
     actions: @Composable RowScope.() -> Unit = {},
@@ -138,8 +156,9 @@ fun DodamLargeTopAppBar(
     ),
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
+
     LargeTopAppBar(
-        title = { HeadlineMedium(text = title) },
+        title = title,
         modifier = modifier,
         navigationIcon = {
             IconButton(
@@ -165,7 +184,9 @@ private fun DodamTopAppBarPreview() {
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             DodamTopAppBar(
-                title = "Headline Small",
+                title = {
+                    Text(text = "Headline Small")
+                },
                 actions = {
                     DodamIconButton(onClick = { /*TODO*/ }) {
                         PlusIcon()
@@ -176,7 +197,9 @@ private fun DodamTopAppBarPreview() {
                 }
             )
             DodamSmallTopAppBar(
-                title = "Title Medium",
+                title = {
+                    Text(text = "Title Medium")
+                },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {
                     DodamIconButton(onClick = { /*TODO*/ }) {
@@ -188,7 +211,9 @@ private fun DodamTopAppBarPreview() {
                 }
             )
             DodamMediumTopAppBar(
-                title = "Headline Small",
+                title = {
+                    Text(text = "Headline Small")
+                },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {
                     DodamIconButton(onClick = { /*TODO*/ }) {
@@ -200,7 +225,9 @@ private fun DodamTopAppBarPreview() {
                 }
             )
             DodamLargeTopAppBar(
-                title = "Headline Medium",
+                title = {
+                    Text(text = "Headline Medium")
+                },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {
                     DodamIconButton(onClick = { /*TODO*/ }) {
