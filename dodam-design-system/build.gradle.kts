@@ -9,9 +9,9 @@ afterEvaluate {
         publications {
             register("release", MavenPublication::class) {
                 from(components["release"])
-                groupId = "com.b1nd.dodam.dds"
+                groupId = "com.b1nd.dodam"
                 artifactId = "dodam-design-system"
-                version = "0.1.0"
+                version = "0.1.2"
             }
         }
     }
