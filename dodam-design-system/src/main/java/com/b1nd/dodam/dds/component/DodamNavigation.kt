@@ -138,7 +138,7 @@ fun DodamNavigationBar(
 
 @Composable
 @Preview
-fun DodamNavigationBarPreview() {
+private fun DodamNavigationBarPreview() {
     DodamTheme {
         DodamNavigationBar(
             navigationItems = persistentListOf(

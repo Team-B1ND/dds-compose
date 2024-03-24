@@ -58,7 +58,7 @@ fun DodamIconButton(
 
 @Composable
 @Preview
-fun DodamIconButtonPreview() {
+private fun DodamIconButtonPreview() {
     DodamTheme {
         DodamIconButton(onClick = { /*TODO*/ }) {
             HomeIcon()

@@ -173,7 +173,7 @@ fun DodamTextField(
 @ExperimentalMaterial3Api
 @Composable
 @Preview(showBackground = true)
-fun DodamTextFieldPreview() {
+private fun DodamTextFieldPreview() {
     var text by remember { mutableStateOf("") }
 
     DodamTheme {
