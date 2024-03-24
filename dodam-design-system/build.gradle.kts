@@ -4,9 +4,6 @@ plugins {
     id("maven-publish")
 }
 
-groupId = "com.b1nd.dodam.dds"
-artifactId = "dodam-design-system"
-
 afterEvaluate {
     publishing {
         publications {
