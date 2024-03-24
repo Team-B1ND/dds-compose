@@ -380,7 +380,7 @@ data class SegmentPosition(
 @Composable
 @Preview
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun DodamSegmentedButtonPreview() {
+private fun DodamSegmentedButtonPreview() {
     DodamTheme {
         var selectedTabIndex by remember { mutableIntStateOf(0) }
         DodamSegmentedButtonRow(

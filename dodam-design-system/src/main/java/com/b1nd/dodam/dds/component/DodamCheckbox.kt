@@ -126,7 +126,7 @@ fun DodamCheckbox(
 
 @Composable
 @Preview
-fun DodamCheckboxPreview() {
+private fun DodamCheckboxPreview() {
     var checked by remember { mutableStateOf(false) }
     DodamTheme {
         DodamCheckbox(

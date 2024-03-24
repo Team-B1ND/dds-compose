@@ -399,7 +399,7 @@ fun DodamTextButton(
 
 @Composable
 @Preview
-fun DodamTextButtonPreview() {
+private fun DodamTextButtonPreview() {
     DodamTheme {
         DodamTextButton(onClick = { /*TODO*/ }) {
             Text(text = "Text button")
@@ -409,7 +409,7 @@ fun DodamTextButtonPreview() {
 
 @Composable
 @Preview
-fun DodamCTAButtonPreview() {
+private fun DodamCTAButtonPreview() {
     DodamTheme {
         Box(modifier = Modifier.fillMaxSize()) {
             DodamCTAButton(onClick = { /*TODO*/ }, content = { BodyLarge(text = "Filled button") })
@@ -419,7 +419,7 @@ fun DodamCTAButtonPreview() {
 
 @Composable
 @Preview
-fun DodamFilledButtonPreview() {
+private fun DodamFilledButtonPreview() {
     DodamTheme {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
@@ -441,7 +441,7 @@ fun DodamFilledButtonPreview() {
 
 @Composable
 @Preview
-fun DodamFilledButtonDisabledPreview() {
+private fun DodamFilledButtonDisabledPreview() {
     DodamTheme {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
@@ -467,7 +467,7 @@ fun DodamFilledButtonDisabledPreview() {
 
 @Composable
 @Preview
-fun DodamFilledButtonLoadingPreview() {
+private fun DodamFilledButtonLoadingPreview() {
     DodamTheme {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
