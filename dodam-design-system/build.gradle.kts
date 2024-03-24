@@ -4,14 +4,15 @@ plugins {
     id("maven-publish")
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            register("release", MavenPublication::class) {
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.b1nd.dodam"
+            artifactId = "dodam-design-system"
+            version = "0.1.3"
+
+            afterEvaluate {
                 from(components["release"])
-                groupId = "com.b1nd.dodam"
-                artifactId = "dodam-design-system"
-                version = "0.1.2"
             }
         }
     }
