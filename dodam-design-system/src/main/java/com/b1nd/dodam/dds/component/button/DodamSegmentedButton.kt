@@ -116,14 +116,21 @@ fun DodamSegmentedButtonRow(
                 segments,
                 {
                     scope.run {
-                        Box(
+                        Surface(
                             modifier = Modifier
-                                .segmentIndicatorOffset(selectedIndex)
-                                .background(
-                                    MaterialTheme.colorScheme.surfaceContainerLow,
-                                    indicatorShape
-                                )
-                        )
+                                .segmentIndicatorOffset(selectedIndex),
+                            color = Color.Transparent,
+                            shape = indicatorShape,
+                            shadowElevation = 4.dp,
+                        ) {
+                            Box(
+                                modifier = Modifier
+                                    .background(
+                                        MaterialTheme.colorScheme.surfaceContainerLow,
+                                        indicatorShape
+                                    )
+                            )
+                        }
                     }
                 },
             )
