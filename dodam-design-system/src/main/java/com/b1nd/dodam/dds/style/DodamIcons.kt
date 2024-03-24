@@ -258,3 +258,18 @@ fun CheckmarkIcon(
         tint = tint,
     )
 }
+
+@Composable
+fun ChevronRightIcon(
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier,
+        imageVector = DodamIcons.ChevronRight,
+        contentDescription = contentDescription,
+        tint = tint,
+    )
+}
+

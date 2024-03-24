@@ -77,4 +77,8 @@ object DodamIcons {
     val CheckmarkCircle
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_checkmark_circle)
+    
+    val ChevronRight
+        @Composable
+        get() = ImageVector.vectorResource(R.drawable.ic_chevron_right)
 }
