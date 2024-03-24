@@ -1,6 +1,20 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("maven-publish")
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication::class) {
+                from(components["release"])
+                groupId = "com.b1nd.dodam.dds"
+                artifactId = "dodam-design-system"
+                version = "0.1.0"
+            }
+        }
+    }
 }
 
 android {
