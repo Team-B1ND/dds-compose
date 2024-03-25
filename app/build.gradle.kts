@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.ir.backend.js.transformers.irToJs.safeModuleName
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
