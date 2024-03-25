@@ -64,19 +64,24 @@ fun Modifier.bounceClick(
             indication = indication,
             onClick = onClick,
         )
-        .pointerInput(buttonState) {
+        .then(
             if (enabled) {
-                awaitPointerEventScope {
-                    buttonState = if (buttonState == ButtonState.Pressed) {
-                        waitForUpOrCancellation()
-                        ButtonState.Idle
-                    } else {
-                        awaitFirstDown(false)
-                        ButtonState.Pressed
+                Modifier
+                    .pointerInput(buttonState) {
+                        awaitPointerEventScope {
+                            buttonState = if (buttonState == ButtonState.Pressed) {
+                                waitForUpOrCancellation()
+                                ButtonState.Idle
+                            } else {
+                                awaitFirstDown(false)
+                                ButtonState.Pressed
+                            }
+                        }
                     }
-                }
+            } else {
+                Modifier
             }
-        }
+        )
 }
 
 @Composable
