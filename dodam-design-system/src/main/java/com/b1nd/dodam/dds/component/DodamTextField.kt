@@ -15,6 +15,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
+import androidx.compose.foundation.text2.input.TextFieldState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
@@ -34,6 +35,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.takeOrElse
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -169,6 +171,134 @@ fun DodamTextField(
     }
 }
 
+@ExperimentalMaterial3Api
+@Composable
+fun DodamTextField(
+    value: TextFieldValue,
+    onValueChange: (TextFieldValue) -> Unit,
+    modifier: Modifier = Modifier,
+    enabled: Boolean = true,
+    readOnly: Boolean = false,
+    textStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    label: @Composable (() -> Unit)? = null,
+    placeholder: @Composable (() -> Unit)? = null,
+    trailingIcon: @Composable (() -> Unit)? = null,
+    suffix: @Composable (() -> Unit)? = null,
+    supportingText: @Composable (() -> Unit)? = null,
+    isError: Boolean = false,
+    visualTransformation: VisualTransformation = VisualTransformation.None,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    singleLine: Boolean = false,
+    maxLines: Int = if (singleLine) 1 else Int.MAX_VALUE,
+    minLines: Int = 1,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    shape: Shape = TextFieldDefaults.shape,
+    colors: TextFieldColors = TextFieldDefaults.colors(
+        focusedTextColor = MaterialTheme.colorScheme.onSurface,
+        unfocusedTextColor = MaterialTheme.colorScheme.onSurface,
+        disabledTextColor = MaterialTheme.colorScheme.onSurface.copy(0.5f),
+        errorTextColor = MaterialTheme.colorScheme.onSurface,
+        focusedContainerColor = Color.Transparent,
+        unfocusedContainerColor = Color.Transparent,
+        disabledContainerColor = Color.Transparent,
+        errorContainerColor = Color.Transparent,
+        cursorColor = MaterialTheme.colorScheme.primary,
+        errorCursorColor = MaterialTheme.colorScheme.error,
+        focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+        unfocusedIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledIndicatorColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.5f),
+        errorIndicatorColor = MaterialTheme.colorScheme.error,
+        focusedTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unfocusedTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.5f),
+        errorTrailingIconColor = MaterialTheme.colorScheme.error,
+        focusedLabelColor = MaterialTheme.colorScheme.primary,
+        unfocusedLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledLabelColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.5f),
+        errorLabelColor = MaterialTheme.colorScheme.error,
+        focusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unfocusedPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.5f),
+        errorPlaceholderColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        focusedSupportingTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        unfocusedSupportingTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
+        disabledSupportingTextColor = MaterialTheme.colorScheme.onSurfaceVariant.copy(0.5f),
+        errorSupportingTextColor = MaterialTheme.colorScheme.error,
+    )
+) {
+    val focused by interactionSource.collectIsFocusedAsState()
+
+    val textColor = textStyle.color.takeOrElse {
+        val targetValue = when {
+            !enabled -> colors.disabledTextColor
+            isError -> colors.errorTextColor
+            focused -> colors.focusedTextColor
+            else -> colors.unfocusedTextColor
+        }
+        targetValue
+    }
+
+    val supportingTextColor = when {
+        !enabled -> colors.disabledSupportingTextColor
+        isError -> colors.errorSupportingTextColor
+        focused -> colors.focusedSupportingTextColor
+        else -> colors.unfocusedSupportingTextColor
+    }
+
+    val mergedTextStyle = textStyle.merge(TextStyle(color = textColor))
+
+    Column {
+        CompositionLocalProvider(LocalTextSelectionColors provides colors.textSelectionColors) {
+            BasicTextField(
+                value = value,
+                modifier = modifier
+                    .defaultMinSize(
+                        minHeight = 56.dp
+                    ),
+                onValueChange = onValueChange,
+                enabled = enabled,
+                readOnly = readOnly,
+                textStyle = mergedTextStyle,
+                cursorBrush = SolidColor(if (isError) colors.errorCursorColor else colors.cursorColor),
+                visualTransformation = visualTransformation,
+                keyboardOptions = keyboardOptions,
+                keyboardActions = keyboardActions,
+                interactionSource = interactionSource,
+                singleLine = singleLine,
+                maxLines = maxLines,
+                minLines = minLines,
+                decorationBox = @Composable { innerTextField ->
+                    TextFieldDefaults.DecorationBox(
+                        value = value.text,
+                        visualTransformation = visualTransformation,
+                        innerTextField = innerTextField,
+                        placeholder = placeholder,
+                        label = label,
+                        trailingIcon = trailingIcon,
+                        suffix = suffix,
+                        shape = shape,
+                        singleLine = singleLine,
+                        enabled = enabled,
+                        isError = isError,
+                        interactionSource = interactionSource,
+                        colors = colors,
+                        contentPadding = PaddingValues(vertical = 8.dp),
+                    )
+                }
+            )
+        }
+
+        supportingText?.let {
+            Spacer(modifier = Modifier.height(4.dp))
+            CompositionLocalProvider(
+                LocalTextStyle provides MaterialTheme.typography.labelLarge,
+                LocalContentColor provides supportingTextColor,
+                content = it
+            )
+        }
+    }
+}
 
 @ExperimentalMaterial3Api
 @Composable
