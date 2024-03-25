@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.LocalContentColor
@@ -84,6 +85,14 @@ fun BoxScope.DodamCTAButton(
     ) {
         Box(
             modifier = modifier
+                .bounceClick(
+                    interactionSource = interactionSource,
+                    indication = rememberRipple(),
+                    interactionColor = Color.Transparent,
+                    enabled = !isLoading && enabled,
+                    onClick = onClick,
+                    role = Role.Button
+                )
                 .minimumInteractiveComponentSize()
                 .graphicsLayer(shadowElevation = elevation, shape = shape, clip = false)
                 .then(if (border != null) Modifier.border(border, shape) else Modifier)
@@ -91,15 +100,7 @@ fun BoxScope.DodamCTAButton(
                     color = if (!isLoading && enabled) colors.containerColor else colors.disabledContainerColor,
                     shape = shape
                 )
-                .clip(shape)
-                .bounceClick(
-                    interactionSource = interactionSource,
-                    indication = null,
-                    interactionColor = Color.Transparent,
-                    enabled = !isLoading && enabled,
-                    onClick = onClick,
-                    role = Role.Button
-                ),
+                .clip(shape),
             propagateMinConstraints = true
         ) {
             Row(
@@ -147,6 +148,14 @@ fun DodamCTAButton(
 ) {
     Box(
         modifier = modifier
+            .bounceClick(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+                interactionColor = Color.Transparent,
+                enabled = !isLoading && enabled,
+                onClick = onClick,
+                role = Role.Button
+            )
             .minimumInteractiveComponentSize()
             .graphicsLayer(shadowElevation = elevation, shape = shape, clip = false)
             .then(if (border != null) Modifier.border(border, shape) else Modifier)
@@ -154,15 +163,7 @@ fun DodamCTAButton(
                 color = if (!isLoading && enabled) colors.containerColor else colors.disabledContainerColor,
                 shape = shape
             )
-            .clip(shape)
-            .bounceClick(
-                interactionSource = interactionSource,
-                indication = null,
-                interactionColor = Color.Transparent,
-                enabled = !isLoading && enabled,
-                onClick = onClick,
-                role = Role.Button
-            ),
+            .clip(shape),
         propagateMinConstraints = true
     ) {
         Row(
@@ -209,6 +210,14 @@ fun DodamSmallFilledButton(
 ) {
     Box(
         modifier = modifier
+            .bounceClick(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+                interactionColor = Color.Transparent,
+                enabled = !isLoading && enabled,
+                onClick = onClick,
+                role = Role.Button
+            )
             .minimumInteractiveComponentSize()
             .graphicsLayer(shadowElevation = elevation, shape = shape, clip = false)
             .then(if (border != null) Modifier.border(border, shape) else Modifier)
@@ -216,15 +225,7 @@ fun DodamSmallFilledButton(
                 color = if (!isLoading && enabled) colors.containerColor else colors.disabledContainerColor,
                 shape = shape
             )
-            .clip(shape)
-            .bounceClick(
-                interactionSource = interactionSource,
-                indication = null,
-                interactionColor = Color.Transparent,
-                enabled = !isLoading && enabled,
-                onClick = onClick,
-                role = Role.Button
-            ),
+            .clip(shape),
         propagateMinConstraints = true
     ) {
         Row(
@@ -270,6 +271,14 @@ fun DodamMediumFilledButton(
 ) {
     Box(
         modifier = modifier
+            .bounceClick(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+                interactionColor = Color.Transparent,
+                enabled = !isLoading && enabled,
+                onClick = onClick,
+                role = Role.Button
+            )
             .minimumInteractiveComponentSize()
             .graphicsLayer(shadowElevation = elevation, shape = shape, clip = false)
             .then(if (border != null) Modifier.border(border, shape) else Modifier)
@@ -277,15 +286,7 @@ fun DodamMediumFilledButton(
                 color = if (!isLoading && enabled) colors.containerColor else colors.disabledContainerColor,
                 shape = shape
             )
-            .clip(shape)
-            .bounceClick(
-                interactionSource = interactionSource,
-                indication = null,
-                interactionColor = Color.Transparent,
-                enabled = !isLoading && enabled,
-                onClick = onClick,
-                role = Role.Button
-            ),
+            .clip(shape),
         propagateMinConstraints = true
     ) {
         Row(
@@ -331,6 +332,14 @@ fun DodamLargeFilledButton(
 ) {
     Box(
         modifier = modifier
+            .bounceClick(
+                interactionSource = interactionSource,
+                indication = rememberRipple(),
+                interactionColor = Color.Transparent,
+                enabled = !isLoading && enabled,
+                onClick = onClick,
+                role = Role.Button
+            )
             .minimumInteractiveComponentSize()
             .graphicsLayer(shadowElevation = elevation, shape = shape, clip = false)
             .then(if (border != null) Modifier.border(border, shape) else Modifier)
@@ -338,15 +347,7 @@ fun DodamLargeFilledButton(
                 color = if (!isLoading && enabled) colors.containerColor else colors.disabledContainerColor,
                 shape = shape
             )
-            .clip(shape)
-            .bounceClick(
-                interactionSource = interactionSource,
-                indication = null,
-                interactionColor = Color.Transparent,
-                enabled = !isLoading && enabled,
-                onClick = onClick,
-                role = Role.Button
-            ),
+            .clip(shape),
         propagateMinConstraints = true
     ) {
         Row(
@@ -362,7 +363,7 @@ fun DodamLargeFilledButton(
                 } else {
                     CompositionLocalProvider(
                         LocalContentColor provides if (enabled) colors.contentColor else colors.disabledContentColor,
-                        LocalTextStyle provides MaterialTheme.typography.bodySmall,
+                        LocalTextStyle provides MaterialTheme.typography.bodyLarge,
                         content = { content() }
                     )
                 }
@@ -378,6 +379,7 @@ fun DodamTextButton(
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     contentPadding: PaddingValues = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+    contentColor: Color = LocalContentColor.current,
     content: @Composable () -> Unit,
 ) {
     Box(
@@ -390,7 +392,7 @@ fun DodamTextButton(
             .padding(contentPadding)
     ) {
         CompositionLocalProvider(
-            LocalContentColor provides MaterialTheme.colorScheme.onSurface,
+            LocalContentColor provides contentColor,
             LocalTextStyle provides MaterialTheme.typography.bodyLarge,
             content = content
         )
@@ -412,7 +414,7 @@ private fun DodamTextButtonPreview() {
 private fun DodamCTAButtonPreview() {
     DodamTheme {
         Box(modifier = Modifier.fillMaxSize()) {
-            DodamCTAButton(onClick = { /*TODO*/ }, content = { BodyLarge(text = "Filled button") })
+            DodamCTAButton(onClick = { /*TODO*/ }, content = { Text(text = "Filled button") })
         }
     }
 }
@@ -424,15 +426,15 @@ private fun DodamFilledButtonPreview() {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") },
+                content = { Text(text = "Filled button") },
             )
             DodamMediumFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") },
+                content = { Text(text = "Filled button") },
             )
             DodamLargeFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodyMedium(text = "Filled button") },
+                content = { Text(text = "Filled button") },
             )
             DodamCTAButton(onClick = { /*TODO*/ }, content = { BodyLarge(text = "Filled button") })
         }
@@ -446,19 +448,19 @@ private fun DodamFilledButtonDisabledPreview() {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") }, enabled = false
+                content = { Text(text = "Filled button") }, enabled = false
             )
             DodamMediumFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") }, enabled = false
+                content = { Text(text = "Filled button") }, enabled = false
             )
             DodamLargeFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodyMedium(text = "Filled button") }, enabled = false
+                content = { Text(text = "Filled button") }, enabled = false
             )
             DodamCTAButton(
                 onClick = { /*TODO*/ },
-                content = { BodyLarge(text = "Filled button") },
+                content = { Text(text = "Filled button") },
                 enabled = false
             )
         }
@@ -472,20 +474,20 @@ private fun DodamFilledButtonLoadingPreview() {
         Column(verticalArrangement = Arrangement.spacedBy(20.dp)) {
             DodamSmallFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") }, isLoading = true
+                content = { Text(text = "Filled button") }, isLoading = true
             )
             DodamMediumFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodySmall(text = "Filled button") }, isLoading = true
+                content = { Text(text = "Filled button") }, isLoading = true
             )
             DodamLargeFilledButton(
                 onClick = { /*TODO*/ },
-                content = { BodyMedium(text = "Filled button") }, isLoading = true
+                content = { Text(text = "Filled button") }, isLoading = true
 
             )
             DodamCTAButton(
                 onClick = { /*TODO*/ },
-                content = { BodyLarge(text = "Filled button") },
+                content = { Text(text = "Filled button") },
                 isLoading = true
             )
         }
