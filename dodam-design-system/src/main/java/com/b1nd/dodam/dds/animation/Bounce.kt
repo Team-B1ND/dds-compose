@@ -39,11 +39,15 @@ fun Modifier.bounceClick(
     val transition = updateTransition(targetState = buttonState, label = "Bounce Effect")
 
     val scale by transition.animateFloat(label = "scale") {
-        if (it == ButtonState.Pressed) 0.9f else 1f
+        if (it == ButtonState.Pressed) 0.95f else 1f
     }
     val color by transition.animateColor(label = "") {
-        if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
-        else interactionColor.copy(alpha = 0f)
+        if (interactionColor != Color.Transparent) {
+            if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
+            else interactionColor.copy(alpha = 0f)
+        } else {
+            Color.Transparent
+        }
     }
 
     this
@@ -84,11 +88,15 @@ fun Modifier.bounceEffect(
     val transition = updateTransition(targetState = buttonState, label = "Bounce Effect")
 
     val scale by transition.animateFloat(label = "scale") {
-        if (it == ButtonState.Pressed) 0.9f else 1f
+        if (it == ButtonState.Pressed) 0.95f else 1f
     }
     val color by transition.animateColor(label = "") {
-        if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
-        else interactionColor.copy(alpha = 0f)
+        if (interactionColor != Color.Transparent) {
+            if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
+            else interactionColor.copy(alpha = 0f)
+        } else {
+            Color.Transparent
+        }
     }
 
     this
