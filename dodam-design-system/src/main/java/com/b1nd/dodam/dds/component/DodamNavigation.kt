@@ -8,11 +8,14 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.selection.selectableGroup
@@ -34,7 +37,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.positionInParent
 import androidx.compose.ui.layout.positionInRoot
+import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -117,7 +122,7 @@ fun DodamNavigationBar(
                             modifier = modifier
                                 .onGloballyPositioned {
                                     if (selectedIndex == index) {
-                                        selectedXOffset = it.positionInRoot().x
+                                        selectedXOffset = it.positionInParent().x
                                     }
                                 },
                             enabled = item.enabled
@@ -140,18 +145,21 @@ fun DodamNavigationBar(
 @Preview
 private fun DodamNavigationBarPreview() {
     DodamTheme {
-        DodamNavigationBar(
-            navigationItems = persistentListOf(
-                rememberDodamNavigationItem("home", DodamIcons.Home),
-                rememberDodamNavigationItem("meal", DodamIcons.ForkAndKnife),
-                rememberDodamNavigationItem("out", DodamIcons.DoorOpen),
-                rememberDodamNavigationItem("nightstudy", DodamIcons.MoonPlus),
-                rememberDodamNavigationItem("menu", DodamIcons.Menu),
-            ),
-            onClickItem = {
+        Box(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp))
+        {
+            DodamNavigationBar(
+                navigationItems = persistentListOf(
+                    rememberDodamNavigationItem("home", DodamIcons.Home),
+                    rememberDodamNavigationItem("meal", DodamIcons.ForkAndKnife),
+                    rememberDodamNavigationItem("out", DodamIcons.DoorOpen),
+                    rememberDodamNavigationItem("nightstudy", DodamIcons.MoonPlus),
+                    rememberDodamNavigationItem("menu", DodamIcons.Menu),
+                ),
+                onClickItem = {
 
-            },
-        )
+                },
+            )
+        }
     }
 }
 
