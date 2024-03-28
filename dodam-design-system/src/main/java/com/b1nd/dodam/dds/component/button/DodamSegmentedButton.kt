@@ -121,7 +121,6 @@ fun DodamSegmentedButtonRow(
                                 .segmentIndicatorOffset(selectedIndex),
                             color = Color.Transparent,
                             shape = indicatorShape,
-                            shadowElevation = 4.dp,
                         ) {
                             Box(
                                 modifier = Modifier
