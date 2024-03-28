@@ -8,7 +8,9 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
+import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,8 +25,6 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.semantics.Role
 
-enum class ButtonState { Pressed, Idle }
-
 @Composable
 fun Modifier.bounceClick(
     onClick: () -> Unit,
@@ -34,16 +34,16 @@ fun Modifier.bounceClick(
     interactionSource: MutableInteractionSource,
     indication: Indication? = null,
 ) = composed {
-    var buttonState by remember { mutableStateOf(ButtonState.Idle) }
+    val pressed by interactionSource.collectIsPressedAsState()
 
-    val transition = updateTransition(targetState = buttonState, label = "Bounce Effect")
+    val transition = updateTransition(targetState = pressed, label = "Bounce Effect")
 
     val scale by transition.animateFloat(label = "scale") {
-        if (it == ButtonState.Pressed) 0.95f else 1f
+        if (it) 0.95f else 1f
     }
     val color by transition.animateColor(label = "") {
         if (interactionColor != Color.Transparent) {
-            if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
+            if (it) interactionColor.copy(alpha = 0.8f)
             else interactionColor.copy(alpha = 0f)
         } else {
             Color.Transparent
@@ -51,12 +51,12 @@ fun Modifier.bounceClick(
     }
 
     this
+        .background(color = color)
         .graphicsLayer {
             scaleX = scale
             scaleY = scale
         }
         .clip(MaterialTheme.shapes.medium)
-        .background(color = color)
         .clickable(
             enabled = enabled,
             role = role,
@@ -64,40 +64,23 @@ fun Modifier.bounceClick(
             indication = indication,
             onClick = onClick,
         )
-        .then(
-            if (enabled) {
-                Modifier
-                    .pointerInput(buttonState) {
-                        awaitPointerEventScope {
-                            buttonState = if (buttonState == ButtonState.Pressed) {
-                                waitForUpOrCancellation()
-                                ButtonState.Idle
-                            } else {
-                                awaitFirstDown(false)
-                                ButtonState.Pressed
-                            }
-                        }
-                    }
-            } else {
-                Modifier
-            }
-        )
 }
 
 @Composable
 fun Modifier.bounceEffect(
     interactionColor: Color = Color.Transparent,
 ) = composed {
-    var buttonState by remember { mutableStateOf(ButtonState.Idle) }
+    val interactionSource = remember { MutableInteractionSource() }
+    val pressed by interactionSource.collectIsPressedAsState()
 
-    val transition = updateTransition(targetState = buttonState, label = "Bounce Effect")
+    val transition = updateTransition(targetState = pressed, label = "Bounce Effect")
 
     val scale by transition.animateFloat(label = "scale") {
-        if (it == ButtonState.Pressed) 0.95f else 1f
+        if (it) 0.95f else 1f
     }
     val color by transition.animateColor(label = "") {
         if (interactionColor != Color.Transparent) {
-            if (it == ButtonState.Pressed) interactionColor.copy(alpha = 0.8f)
+            if (it) interactionColor.copy(alpha = 0.8f)
             else interactionColor.copy(alpha = 0f)
         } else {
             Color.Transparent
@@ -111,15 +94,5 @@ fun Modifier.bounceEffect(
         }
         .clip(MaterialTheme.shapes.medium)
         .background(color = color)
-        .pointerInput(buttonState) {
-            awaitPointerEventScope {
-                buttonState = if (buttonState == ButtonState.Pressed) {
-                    waitForUpOrCancellation()
-                    ButtonState.Idle
-                } else {
-                    awaitFirstDown(false)
-                    ButtonState.Pressed
-                }
-            }
-        }
+        .indication(interactionSource, indication = null)
 }
