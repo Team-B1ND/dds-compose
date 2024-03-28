@@ -1,5 +1,6 @@
 package com.b1nd.dodam.dds.component
 
+import android.content.res.Configuration
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -126,7 +127,7 @@ fun DodamNavigationBar(
                                         selectedXOffset = it.positionInParent().x
                                     }
                                 },
-                            enabled = item.enabled
+                            enabled = selectedIndex != index && item.enabled
                         ) {
                             Icon(
                                 imageVector = item.icon,
@@ -144,25 +145,21 @@ fun DodamNavigationBar(
 
 @Composable
 @Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun DodamNavigationBarPreview() {
     DodamTheme {
-        Box(modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp))
-        {
-            DodamNavigationBar(
-                navigationItems = persistentListOf(
-                    rememberDodamNavigationItem("home", DodamIcons.Home),
-                    rememberDodamNavigationItem("meal", DodamIcons.ForkAndKnife),
-                    rememberDodamNavigationItem("out", DodamIcons.DoorOpen),
-                    rememberDodamNavigationItem("nightstudy", DodamIcons.MoonPlus),
-                    rememberDodamNavigationItem("menu", DodamIcons.Menu),
-                ),
-                onClickItem = {
+        DodamNavigationBar(
+            navigationItems = persistentListOf(
+                rememberDodamNavigationItem("home", DodamIcons.Home),
+                rememberDodamNavigationItem("meal", DodamIcons.ForkAndKnife),
+                rememberDodamNavigationItem("out", DodamIcons.DoorOpen),
+                rememberDodamNavigationItem("nightstudy", DodamIcons.MoonPlus),
+                rememberDodamNavigationItem("menu", DodamIcons.Menu),
+            ),
+            onClickItem = {
 
-                },
-            )
-        }
+            },
+        )
     }
 }
 
