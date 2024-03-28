@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LargeTopAppBar
@@ -56,7 +57,8 @@ fun DodamTopAppBar(
                 content = title
             )
         },
-        modifier = modifier,
+        modifier = modifier
+            .padding(horizontal = 4.dp),
         actions = actions,
         windowInsets = windowInsets,
         colors = colors,
@@ -90,7 +92,8 @@ fun DodamSmallTopAppBar(
                 content = title
             )
         },
-        modifier = modifier,
+        modifier = modifier
+            .padding(horizontal = 4.dp),
         navigationIcon = {
             IconButton(
                 onClick = onNavigationIconClick
@@ -124,7 +127,8 @@ fun DodamMediumTopAppBar(
 ) {
     MediumTopAppBar(
         title = title,
-        modifier = modifier,
+        modifier = modifier
+            .padding(horizontal = 4.dp),
         navigationIcon = {
             IconButton(
                 onClick = onNavigationIconClick
@@ -159,7 +163,8 @@ fun DodamLargeTopAppBar(
 
     LargeTopAppBar(
         title = title,
-        modifier = modifier,
+        modifier = modifier
+            .padding(horizontal = 4.dp),
         navigationIcon = {
             IconButton(
                 onClick = onNavigationIconClick
