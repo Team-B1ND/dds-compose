@@ -273,3 +273,44 @@ fun ChevronRightIcon(
     )
 }
 
+@Composable
+fun TrashIcon(
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier,
+        imageVector = DodamIcons.Trash,
+        contentDescription = contentDescription,
+        tint = tint,
+    )
+}
+
+@Composable
+fun GearIcon(
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier,
+        imageVector = DodamIcons.Gear,
+        contentDescription = contentDescription,
+        tint = tint,
+    )
+}
+
+@Composable
+fun MagnifyingGlassIcon(
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier,
+        imageVector = DodamIcons.MagnifyingGlass,
+        contentDescription = contentDescription,
+        tint = tint,
+    )
+}

@@ -81,4 +81,16 @@ object DodamIcons {
     val ChevronRight
         @Composable
         get() = ImageVector.vectorResource(R.drawable.ic_chevron_right)
+
+    val Trash
+        @Composable
+        get() = ImageVector.vectorResource(R.drawable.ic_trash)
+
+    val MagnifyingGlass
+        @Composable
+        get() = ImageVector.vectorResource(R.drawable.ic_magnifyingglass)
+
+    val Gear
+        @Composable
+        get() = ImageVector.vectorResource(R.drawable.ic_gear)
 }
