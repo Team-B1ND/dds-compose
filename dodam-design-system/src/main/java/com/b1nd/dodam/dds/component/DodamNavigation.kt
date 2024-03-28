@@ -30,6 +30,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -65,8 +66,8 @@ fun DodamNavigationBar(
     navigationItems: ImmutableList<DodamNavigationItem>,
     onClickItem: (DodamNavigationItem) -> Unit,
 ) {
-    var selectedIndex by remember { mutableIntStateOf(0) }
-    var selectedXOffset by remember { mutableFloatStateOf(43f) }
+    var selectedIndex by rememberSaveable { mutableIntStateOf(0) }
+    var selectedXOffset by rememberSaveable { mutableFloatStateOf(43f) }
     val x by animateFloatAsState(targetValue = selectedXOffset, label = "")
 
     Surface(
@@ -145,7 +146,9 @@ fun DodamNavigationBar(
 @Preview
 private fun DodamNavigationBarPreview() {
     DodamTheme {
-        Box(modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp))
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp))
         {
             DodamNavigationBar(
                 navigationItems = persistentListOf(
