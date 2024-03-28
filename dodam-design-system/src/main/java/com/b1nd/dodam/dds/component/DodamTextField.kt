@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -124,6 +125,7 @@ fun DodamTextField(
             BasicTextField(
                 value = value,
                 modifier = modifier
+                    .fillMaxWidth()
                     .defaultMinSize(
                         minHeight = 56.dp
                     ),
@@ -253,8 +255,9 @@ fun DodamTextField(
             BasicTextField(
                 value = value,
                 modifier = modifier
+                    .fillMaxWidth()
                     .defaultMinSize(
-                        minHeight = 56.dp
+                        minHeight = 56.dp,
                     ),
                 onValueChange = onValueChange,
                 enabled = enabled,
@@ -313,7 +316,6 @@ private fun DodamTextFieldPreview() {
                 .padding(horizontal = 16.dp), verticalArrangement = Arrangement.Center
         ) {
             DodamTextField(
-                modifier = Modifier.fillMaxWidth(),
                 value = text,
                 onValueChange = { text = it },
                 placeholder = { Text(text = "Place holder") },
@@ -324,7 +326,6 @@ private fun DodamTextFieldPreview() {
             )
 
             DodamTextField(
-                modifier = Modifier.fillMaxWidth(),
                 value = text,
                 onValueChange = { text = it },
                 placeholder = { Text(text = "Place holder") },
@@ -335,7 +336,6 @@ private fun DodamTextFieldPreview() {
                 }
             )
             DodamTextField(
-                modifier = Modifier.fillMaxWidth(),
                 value = text,
                 onValueChange = { text = it },
                 placeholder = { Text(text = "Place holder") },
