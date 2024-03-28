@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
@@ -43,6 +42,8 @@ import androidx.compose.ui.node.LayoutModifierNode
 import androidx.compose.ui.node.ModifierNodeElement
 import androidx.compose.ui.platform.InspectorInfo
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.selected
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Constraints
@@ -51,7 +52,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import androidx.compose.ui.util.fastForEachIndexed
 import androidx.compose.ui.util.fastMap
-import com.b1nd.dodam.dds.animation.bounceEffect
+import com.b1nd.dodam.dds.animation.bounceClick
 import com.b1nd.dodam.dds.style.BodyMedium
 import com.b1nd.dodam.dds.theme.DodamTheme
 import kotlinx.coroutines.launch
@@ -205,16 +206,16 @@ fun DodamSegment(
     SegmentTransition(selectedContentColor, unselectedContentColor, selected) {
         Box(
             modifier = modifier
-                .selectable(
-                    selected = selected,
+                .bounceClick(
                     onClick = onClick,
-                    enabled = enabled,
+                    enabled = enabled && !selected,
                     role = Role.Tab,
                     interactionSource = interactionSource,
                     indication = null
-                )
-                .fillMaxWidth()
-                .then(if (enabled && !selected) Modifier.bounceEffect(MaterialTheme.colorScheme.secondary) else Modifier),
+                ).semantics {
+                    this.selected = selected
+                }
+                .fillMaxWidth(),
             contentAlignment = Alignment.Center,
             content = content
         )
