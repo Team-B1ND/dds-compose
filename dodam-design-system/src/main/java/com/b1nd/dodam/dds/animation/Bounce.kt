@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
+import androidx.compose.foundation.hoverable
 import androidx.compose.foundation.indication
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -23,6 +24,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.debugInspectorInfo
+import androidx.compose.ui.platform.inspectable
 import androidx.compose.ui.semantics.Role
 
 @Composable
@@ -31,7 +34,7 @@ fun Modifier.bounceClick(
     enabled: Boolean = true,
     role: Role? = null,
     interactionColor: Color = MaterialTheme.colorScheme.secondary,
-    interactionSource: MutableInteractionSource,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     indication: Indication? = null,
 ) = composed {
     val pressed by interactionSource.collectIsPressedAsState()
@@ -51,12 +54,14 @@ fun Modifier.bounceClick(
     }
 
     this
-        .background(color = color)
+        .background(
+            color = color,
+            shape = MaterialTheme.shapes.medium
+        )
         .graphicsLayer {
             scaleX = scale
             scaleY = scale
         }
-        .clip(MaterialTheme.shapes.medium)
         .clickable(
             enabled = enabled,
             role = role,
@@ -64,35 +69,4 @@ fun Modifier.bounceClick(
             indication = indication,
             onClick = onClick,
         )
-}
-
-@Composable
-fun Modifier.bounceEffect(
-    interactionColor: Color = Color.Transparent,
-) = composed {
-    val interactionSource = remember { MutableInteractionSource() }
-    val pressed by interactionSource.collectIsPressedAsState()
-
-    val transition = updateTransition(targetState = pressed, label = "Bounce Effect")
-
-    val scale by transition.animateFloat(label = "scale") {
-        if (it) 0.95f else 1f
-    }
-    val color by transition.animateColor(label = "") {
-        if (interactionColor != Color.Transparent) {
-            if (it) interactionColor.copy(alpha = 0.8f)
-            else interactionColor.copy(alpha = 0f)
-        } else {
-            Color.Transparent
-        }
-    }
-
-    this
-        .graphicsLayer {
-            scaleX = scale
-            scaleY = scale
-        }
-        .clip(MaterialTheme.shapes.medium)
-        .background(color = color)
-        .indication(interactionSource, indication = null)
 }
