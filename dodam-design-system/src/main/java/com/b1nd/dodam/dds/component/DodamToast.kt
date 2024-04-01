@@ -1,6 +1,8 @@
 package com.b1nd.dodam.dds.component
 
+import android.content.res.Configuration
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -30,7 +32,7 @@ fun DodamToast(
     textColor: Color = DodamColor.White,
     trailingIcon: @Composable () -> Unit,
     iconColor: Color = DodamColor.Green,
-    containerColor: Color = DodamColor.Gray700.copy(alpha = 0.8f),
+    containerColor: Color = if (isSystemInDarkTheme()) DodamColor.Gray750 else DodamColor.Gray500,
 ) {
     Row(
         modifier = Modifier
@@ -48,7 +50,7 @@ fun DodamToast(
 }
 
 @Composable
-@Preview
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 private fun DodamToastPreview() {
     DodamTheme {
         DodamToast(
