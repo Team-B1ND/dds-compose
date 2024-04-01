@@ -3,9 +3,11 @@ package com.b1nd.dodam.dds.animation
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.updateTransition
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Indication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.gestures.awaitFirstDown
 import androidx.compose.foundation.gestures.waitForUpOrCancellation
 import androidx.compose.foundation.hoverable
@@ -70,3 +72,52 @@ fun Modifier.bounceClick(
             onClick = onClick,
         )
 }
+
+@ExperimentalFoundationApi
+@Composable
+fun Modifier.bounceCombinedClick(
+    onClick: () -> Unit,
+    onLongClick: (() -> Unit)? = null,
+    onDoubleClick: (() -> Unit)? = null,
+    enabled: Boolean = true,
+    role: Role? = null,
+    interactionColor: Color = MaterialTheme.colorScheme.secondary,
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
+    indication: Indication? = null,
+) = composed {
+    val pressed by interactionSource.collectIsPressedAsState()
+
+    val transition = updateTransition(targetState = pressed, label = "Bounce Effect")
+
+    val scale by transition.animateFloat(label = "scale") {
+        if (it) 0.95f else 1f
+    }
+    val color by transition.animateColor(label = "") {
+        if (interactionColor != Color.Transparent) {
+            if (it) interactionColor.copy(alpha = 0.8f)
+            else interactionColor.copy(alpha = 0f)
+        } else {
+            Color.Transparent
+        }
+    }
+
+    this
+        .background(
+            color = color,
+            shape = MaterialTheme.shapes.medium
+        )
+        .graphicsLayer {
+            scaleX = scale
+            scaleY = scale
+        }
+        .combinedClickable(
+            enabled = enabled,
+            role = role,
+            interactionSource = interactionSource,
+            indication = indication,
+            onClick = onClick,
+            onLongClick = onLongClick,
+            onDoubleClick = onDoubleClick
+        )
+}
+
