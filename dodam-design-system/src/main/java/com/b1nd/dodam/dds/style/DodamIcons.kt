@@ -246,6 +246,20 @@ fun CheckmarkCircleIcon(
 }
 
 @Composable
+fun CheckmarkCircleFilledIcon(
+    modifier: Modifier = Modifier,
+    contentDescription: String? = null,
+    tint: Color = LocalContentColor.current,
+) {
+    Icon(
+        modifier = modifier,
+        imageVector = DodamIcons.CheckmarkCircleFilled,
+        contentDescription = contentDescription,
+        tint = tint,
+    )
+}
+
+@Composable
 fun CheckmarkIcon(
     modifier: Modifier = Modifier,
     contentDescription: String? = null,

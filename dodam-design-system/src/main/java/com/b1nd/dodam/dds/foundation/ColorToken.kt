@@ -7,6 +7,8 @@ object DodamColor {
 
     val Red = Color(0xFFEF2B2A)
 
+    val Green = Color(0xFF00C265)
+
     val White = Color(0xFFFFFFFF)
     val Black = Color(0xFF000000)
 
