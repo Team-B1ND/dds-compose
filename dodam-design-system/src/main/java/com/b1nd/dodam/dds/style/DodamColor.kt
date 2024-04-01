@@ -23,6 +23,8 @@ internal val DodamLightColorScheme = lightColorScheme(
     onSurfaceVariant = DodamColor.Gray400,
     outline = DodamColor.Gray300,
     outlineVariant = DodamColor.Gray200,
+    background = DodamColor.White,
+    onBackground = DodamColor.Gray900
 )
 
 internal val DodamDarkColorScheme = darkColorScheme(
@@ -41,5 +43,7 @@ internal val DodamDarkColorScheme = darkColorScheme(
     surfaceContainerHigh = DodamColor.Gray850,
     onSurfaceVariant = DodamColor.Gray600,
     outline = DodamColor.Gray700,
-    outlineVariant = DodamColor.Gray600,
+    outlineVariant = DodamColor.Gray800,
+    background = DodamColor.Gray870,
+    onBackground = DodamColor.White
 )
