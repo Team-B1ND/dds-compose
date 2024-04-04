@@ -19,83 +19,87 @@ import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.sp
 import com.b1nd.dodam.dds.R
 
-val Pretendard = FontFamily(
-    Font(R.font.pretendard_extrabold, FontWeight.ExtraBold),
-    Font(R.font.pretendard_bold, FontWeight.Bold),
-    Font(R.font.pretendard_semibold, FontWeight.SemiBold),
-    Font(R.font.pretendard_medium, FontWeight.Medium),
-    Font(R.font.pretendard_regular, FontWeight.Normal),
+val suit = FontFamily(
+    Font(R.font.suit_heavy, FontWeight.Black),
+    Font(R.font.suit_extrabold, FontWeight.ExtraBold),
+    Font(R.font.suit_bold, FontWeight.Bold),
+    Font(R.font.suit_semibold, FontWeight.SemiBold),
+    Font(R.font.suit_medium, FontWeight.Medium),
+    Font(R.font.suit_regular, FontWeight.Normal),
+    Font(R.font.suit_light, FontWeight.Light),
+    Font(R.font.suit_extralight, FontWeight.ExtraLight),
+    Font(R.font.suit_thin, FontWeight.Thin),
 )
 
 internal val DodamTypography = Typography(
     headlineLarge = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.ExtraBold,
         fontSize = 32.sp,
         lineHeight = 40.sp,
     ),
     headlineMedium = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Bold,
         fontSize = 28.sp,
         lineHeight = 32.sp,
     ),
     headlineSmall = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Bold,
         fontSize = 24.sp,
         lineHeight = 32.sp,
     ),
     titleLarge = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Bold,
         fontSize = 22.sp,
         lineHeight = 28.sp,
     ),
     titleMedium = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
         lineHeight = 26.sp,
     ),
     titleSmall = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Bold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
     ),
     bodyLarge = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.SemiBold,
         fontSize = 18.sp,
         lineHeight = 26.sp,
     ),
     bodyMedium = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         lineHeight = 24.sp,
     ),
     bodySmall = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
     ),
     labelLarge = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
     ),
     labelMedium = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         lineHeight = 16.sp,
     ),
     labelSmall = TextStyle(
-        fontFamily = Pretendard,
+        fontFamily = suit,
         fontWeight = FontWeight.Normal,
         fontSize = 11.sp,
         lineHeight = 16.sp,
