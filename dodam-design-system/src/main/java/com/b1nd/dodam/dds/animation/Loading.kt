@@ -26,7 +26,7 @@ fun LoadingDotsIndicator(
     count: Int = 3,
     pointColor: Color = DodamColor.White,
     color: Color = DodamColor.Gray400,
-    delay: Long = 300
+    delay: Long = 150
 ) {
     Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         repeat(count) {
