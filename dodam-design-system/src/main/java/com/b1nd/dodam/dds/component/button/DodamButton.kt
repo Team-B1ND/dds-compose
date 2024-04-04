@@ -87,7 +87,7 @@ fun BoxScope.DodamCTAButton(
             modifier = modifier
                 .bounceClick(
                     interactionSource = interactionSource,
-                    indication = rememberRipple(radius = 18.dp),
+                    indication = null,
                     interactionColor = Color.Transparent,
                     enabled = !isLoading && enabled,
                     onClick = onClick,
@@ -150,7 +150,7 @@ fun DodamCTAButton(
         modifier = modifier
             .bounceClick(
                 interactionSource = interactionSource,
-                indication = rememberRipple(radius = 18.dp),
+                indication = null,
                 interactionColor = Color.Transparent,
                 enabled = !isLoading && enabled,
                 onClick = onClick,
@@ -212,7 +212,7 @@ fun DodamSmallFilledButton(
         modifier = modifier
             .bounceClick(
                 interactionSource = interactionSource,
-                indication = rememberRipple(radius = 8.dp),
+                indication = null,
                 interactionColor = Color.Transparent,
                 enabled = !isLoading && enabled,
                 onClick = onClick,
@@ -273,7 +273,7 @@ fun DodamMediumFilledButton(
         modifier = modifier
             .bounceClick(
                 interactionSource = interactionSource,
-                indication = rememberRipple(radius = 10.dp),
+                indication = null,
                 interactionColor = Color.Transparent,
                 enabled = !isLoading && enabled,
                 onClick = onClick,
@@ -334,7 +334,7 @@ fun DodamLargeFilledButton(
         modifier = modifier
             .bounceClick(
                 interactionSource = interactionSource,
-                indication = rememberRipple(radius = 12.dp),
+                indication = null,
                 interactionColor = Color.Transparent,
                 enabled = !isLoading && enabled,
                 onClick = onClick,
