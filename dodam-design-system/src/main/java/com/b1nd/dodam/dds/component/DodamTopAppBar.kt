@@ -126,7 +126,13 @@ fun DodamMediumTopAppBar(
     scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     MediumTopAppBar(
-        title = title,
+        title = {
+            CompositionLocalProvider(
+                LocalContentColor provides colors.titleContentColor,
+                LocalTextStyle provides MaterialTheme.typography.headlineSmall,
+                content = title
+            )
+        },
         modifier = modifier
             .padding(horizontal = 4.dp),
         navigationIcon = {
@@ -162,7 +168,13 @@ fun DodamLargeTopAppBar(
 ) {
 
     LargeTopAppBar(
-        title = title,
+        title = {
+            CompositionLocalProvider(
+                LocalContentColor provides colors.titleContentColor,
+                LocalTextStyle provides MaterialTheme.typography.headlineMedium,
+                content = title
+            )
+        },
         modifier = modifier
             .padding(horizontal = 4.dp),
         navigationIcon = {
@@ -190,7 +202,7 @@ private fun DodamTopAppBarPreview() {
         ) {
             DodamTopAppBar(
                 title = {
-                    Text(text = "Headline Small")
+                    Text(text = "제목을 입력해주세요")
                 },
                 actions = {
                     DodamIconButton(onClick = { /*TODO*/ }) {
@@ -203,7 +215,7 @@ private fun DodamTopAppBarPreview() {
             )
             DodamSmallTopAppBar(
                 title = {
-                    Text(text = "Title Medium")
+                    Text(text = "제목을 입력해주세요")
                 },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {
@@ -217,7 +229,7 @@ private fun DodamTopAppBarPreview() {
             )
             DodamMediumTopAppBar(
                 title = {
-                    Text(text = "Headline Small")
+                    Text(text = "제목을 입력해주세요")
                 },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {
@@ -231,7 +243,7 @@ private fun DodamTopAppBarPreview() {
             )
             DodamLargeTopAppBar(
                 title = {
-                    Text(text = "Headline Medium")
+                    Text(text = "제목을 입력해주세요")
                 },
                 onNavigationIconClick = { /*TODO*/ },
                 actions = {

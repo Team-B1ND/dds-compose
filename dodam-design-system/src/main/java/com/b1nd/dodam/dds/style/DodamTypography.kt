@@ -34,19 +34,19 @@ val suit = FontFamily(
 internal val DodamTypography = Typography(
     headlineLarge = TextStyle(
         fontFamily = suit,
-        fontWeight = FontWeight.ExtraBold,
+        fontWeight = FontWeight.Black,
         fontSize = 32.sp,
         lineHeight = 40.sp,
     ),
     headlineMedium = TextStyle(
         fontFamily = suit,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.ExtraBold,
         fontSize = 28.sp,
         lineHeight = 32.sp,
     ),
     headlineSmall = TextStyle(
         fontFamily = suit,
-        fontWeight = FontWeight.Bold,
+        fontWeight = FontWeight.ExtraBold,
         fontSize = 24.sp,
         lineHeight = 32.sp,
     ),
