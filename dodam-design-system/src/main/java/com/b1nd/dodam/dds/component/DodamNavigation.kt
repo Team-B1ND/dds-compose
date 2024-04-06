@@ -126,7 +126,7 @@ fun DodamNavigationBar(
                     scope.run {
                         Surface(
                             modifier = Modifier
-                                .size(48.dp)
+                                .size(44.dp)
                                 .navigationIndicatorOffset(selectedIndex),
                             color = Color.Transparent,
                             shape = indicatorShape,
