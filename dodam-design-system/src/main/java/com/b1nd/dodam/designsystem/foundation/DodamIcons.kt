@@ -1,9 +1,9 @@
-package com.b1nd.dodam.dds.foundation
+package com.b1nd.dodam.designsystem.foundation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import com.b1nd.dodam.dds.R
+import com.b1nd.dodam.designsystem.R
 
 object DodamIcons {
     val Home
