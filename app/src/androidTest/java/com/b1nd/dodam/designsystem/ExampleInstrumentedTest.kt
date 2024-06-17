@@ -1,4 +1,4 @@
-package com.b1nd.dodam.dds
+package com.b1nd.dodam.designsystem
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

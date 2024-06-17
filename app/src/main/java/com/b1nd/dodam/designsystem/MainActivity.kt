@@ -1,4 +1,4 @@
-package com.b1nd.dodam.dds
+package com.b1nd.dodam.designsystem
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
