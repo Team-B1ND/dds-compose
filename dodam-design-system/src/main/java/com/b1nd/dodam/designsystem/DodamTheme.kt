@@ -7,6 +7,7 @@ import androidx.compose.material3.Shapes
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
 import com.b1nd.dodam.designsystem.foundation.DodamColors
 import com.b1nd.dodam.designsystem.foundation.DodamTypography
 import com.b1nd.dodam.designsystem.foundation.LocalDodamColors
@@ -20,11 +21,10 @@ fun DodamTheme(
     content: @Composable () -> Unit,
 ) {
     val dodamColors =  if(darkTheme) darkDodamColors() else lightDodamColors()
-    val rippleIndication = androidx.compose.material.ripple.rememberRipple()
+    val bounceIndication = rememberBounceIndication()
     CompositionLocalProvider(
         LocalDodamColors provides dodamColors,
-        LocalIndication provides rippleIndication,
-//        androidx.compose.material.ripple.LocalRippleTheme provides MaterialRippleTheme,
+        LocalIndication provides bounceIndication,
 //        LocalShapes provides shapes,
         LocalDodamTypography provides DodamTheme.typography,
         content = content
