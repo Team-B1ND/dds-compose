@@ -17,8 +17,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
-import com.b1nd.dodam.designsystem.foundation.value
-import com.b1nd.dodam.designsystem.tokens.DodamColorKeyTokens
 
 @Composable
 fun DodamDivider(
@@ -95,5 +93,5 @@ enum class DividerType {
 object DividerDefaults {
     val NormalThickness: Dp = 1.dp
     val ThickThickness: Dp = 12.dp
-    val color: Color @Composable get() = DodamColorKeyTokens.LineNormalAlternative.value
+    val color: Color @Composable get() = DodamTheme.colors.lineAlternative
 }

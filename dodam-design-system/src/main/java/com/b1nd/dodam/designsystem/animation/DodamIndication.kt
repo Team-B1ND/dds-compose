@@ -8,6 +8,8 @@ import androidx.compose.foundation.Indication
 import androidx.compose.foundation.IndicationInstance
 import androidx.compose.foundation.interaction.InteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.shape.CornerBasedShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -15,19 +17,20 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.graphics.drawscope.scale
+import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.b1nd.dodam.designsystem.foundation.value
-import com.b1nd.dodam.designsystem.tokens.DodamColorKeyTokens
+import com.b1nd.dodam.designsystem.DodamTheme
 
 internal class BounceIndication(
     private val scale: Float,
-    private val radius: Dp
+    private val radius: CornerBasedShape
 ) : Indication {
 
     @Composable
     override fun rememberUpdatedInstance(interactionSource: InteractionSource): IndicationInstance {
-        val transition = updateTransition(targetState = interactionSource.collectIsPressedAsState().value,
+        val transition = updateTransition(
+            targetState = interactionSource.collectIsPressedAsState().value,
             label = "BounceIndicationTransition"
         )
         val scale by transition.animateFloat(
@@ -52,7 +55,7 @@ internal class BounceIndication(
 
     inner class BounceIndicationInstance(
         private val scale: Float,
-        private val radius: Dp,
+        private val radius: CornerBasedShape,
         private val color: Color
     ) : IndicationInstance {
 
@@ -62,7 +65,10 @@ internal class BounceIndication(
                 this@drawIndication.drawContent()
                 drawRoundRect(
                     color = color,
-                    cornerRadius = CornerRadius(radius.toPx(), radius.toPx())
+                    cornerRadius = CornerRadius(
+                        radius.topStart.toPx(size, Density(density)),
+                        radius.bottomEnd.toPx(size, Density(density))
+                    )
                 )
             }
         }
@@ -71,15 +77,15 @@ internal class BounceIndication(
 
 @Composable
 fun rememberBounceIndication(
+    radius: CornerBasedShape = BounceIndicationDefaults.DefaultRadius,
     scale: Float = BounceIndicationDefaults.DEFAULT_SCALE,
-    radius: Dp = BounceIndicationDefaults.DefaultRadius,
 ): Indication {
     return remember { BounceIndication(scale, radius) }
 }
 
 internal object BounceIndicationDefaults {
-    const val DEFAULT_SCALE = 0.9f
+    const val DEFAULT_SCALE = 0.95f
 
-    val DefaultRadius = 4.dp
-    val DefaultColor @Composable get() = DodamColorKeyTokens.StaticBlack.value
+    val DefaultRadius = RoundedCornerShape(4.dp)
+    val DefaultColor @Composable get() = DodamTheme.colors.staticBlack
 }

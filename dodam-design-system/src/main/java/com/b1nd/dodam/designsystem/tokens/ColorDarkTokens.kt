@@ -2,57 +2,34 @@ package com.b1nd.dodam.designsystem.tokens
 
 internal object ColorDarkTokens {
     object Primary {
-        val Normal = PaletteTokens.Blue60
-        val Strong = PaletteTokens.Blue55
-        val Heavy = PaletteTokens.Blue50
+        val Normal = PaletteTokens.Blue500
+        val Assistive = PaletteTokens.Blue900
     }
 
     object Label {
-        val Normal = PaletteTokens.Neutral99
+        val Normal = PaletteTokens.Gray100
         val Strong = PaletteTokens.White
-        val Neutral = PaletteTokens.Neutral90.copy(PaletteTokens.OPACITY_88)
-        val Alternative = PaletteTokens.Neutral80.copy(PaletteTokens.OPACITY_61)
-        val Assistive = PaletteTokens.Neutral80.copy(PaletteTokens.OPACITY_28)
-        val Disable = PaletteTokens.Neutral70.copy(PaletteTokens.OPACITY_16)
+        val Neutral = PaletteTokens.Gray300
+        val Alternative = PaletteTokens.Gray400
+        val Assistive = PaletteTokens.Gray500
+        val Disabled = PaletteTokens.Gray400
     }
 
     object Background {
-        object Normal {
-            val Normal = PaletteTokens.Neutral15
-            val Alternative = PaletteTokens.Neutral5
-        }
-
-        object Elevated {
-            val Normal = PaletteTokens.Neutral17
-            val Alternative = PaletteTokens.Neutral17
-        }
-    }
-
-    object Interaction {
-        val Inactive = PaletteTokens.Neutral40
-        val Disable = PaletteTokens.Neutral22
+        val Normal = PaletteTokens.Gray870
+        val Alternative = PaletteTokens.Gray900
     }
 
     object Line {
-        object Normal {
-            val Normal = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_35)
-            val Neutral = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_28)
-            val Alternative = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_22)
-            val Strong = PaletteTokens.Neutral90.copy(PaletteTokens.OPACITY_52)
-        }
-
-        object Solid {
-            val Normal = PaletteTokens.Neutral25
-            val Neutral = PaletteTokens.Neutral23
-            val Alternative = PaletteTokens.Neutral22
-            val Strong = PaletteTokens.Neutral50
-        }
+        val Normal = PaletteTokens.Gray700
+        val Neutral = PaletteTokens.Gray650
+        val Alternative = PaletteTokens.Gray750
     }
 
     object Status {
-        val Positive = PaletteTokens.Green60
-        val Negative = PaletteTokens.Red60
-        val Cautionary = PaletteTokens.Yellow60
+        val Positive = PaletteTokens.Green400
+        val Negative = PaletteTokens.Red400
+        val Cautionary = PaletteTokens.Yellow400
     }
 
     object Static {
@@ -60,21 +37,8 @@ internal object ColorDarkTokens {
         val Black = PaletteTokens.Black
     }
 
-    object Inverse {
-        val Primary = PaletteTokens.Blue50
-        val Background = PaletteTokens.White
-        val Label = PaletteTokens.Neutral10
-    }
-
     object Component {
-        object Fill {
-            val Normal = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_22)
-            val Strong = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_28)
-            val Alternative = PaletteTokens.Neutral50.copy(PaletteTokens.OPACITY_12)
-        }
-
-        object Material {
-            val Dimmer = PaletteTokens.Neutral10.copy(PaletteTokens.OPACITY_74)
-        }
+        val Normal = PaletteTokens.Gray800
+        val Strong = PaletteTokens.Gray750
     }
 }
