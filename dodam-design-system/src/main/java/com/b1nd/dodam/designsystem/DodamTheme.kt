@@ -2,15 +2,21 @@ package com.b1nd.dodam.designsystem
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Shapes
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
 import com.b1nd.dodam.designsystem.foundation.DodamColors
+import com.b1nd.dodam.designsystem.foundation.DodamIcons
+import com.b1nd.dodam.designsystem.foundation.DodamShapes
 import com.b1nd.dodam.designsystem.foundation.DodamTypography
 import com.b1nd.dodam.designsystem.foundation.LocalDodamColors
+import com.b1nd.dodam.designsystem.foundation.LocalDodamShapes
 import com.b1nd.dodam.designsystem.foundation.LocalDodamTypography
 import com.b1nd.dodam.designsystem.foundation.darkDodamColors
 import com.b1nd.dodam.designsystem.foundation.lightDodamColors
@@ -20,18 +26,15 @@ fun DodamTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit,
 ) {
-    val dodamColors =  if(darkTheme) darkDodamColors() else lightDodamColors()
+    val dodamColors = if (darkTheme) darkDodamColors() else lightDodamColors()
     val bounceIndication = rememberBounceIndication()
     CompositionLocalProvider(
         LocalDodamColors provides dodamColors,
         LocalIndication provides bounceIndication,
-//        LocalShapes provides shapes,
+        LocalDodamShapes provides DodamTheme.shapes,
         LocalDodamTypography provides DodamTheme.typography,
         content = content
     )
-    MaterialTheme {
-
-    }
 }
 
 object DodamTheme {
@@ -45,8 +48,8 @@ object DodamTheme {
         @ReadOnlyComposable
         get() = LocalDodamTypography.current
 
-//    val shapes: Shapes
-//        @Composable
-//        @ReadOnlyComposable
-//        get() = LocalShapes.current
+    val shapes: DodamShapes
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalDodamShapes.current
 }
