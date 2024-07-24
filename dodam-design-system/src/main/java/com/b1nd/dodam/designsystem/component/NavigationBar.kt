@@ -135,7 +135,7 @@ private object NavigationBarDefaults {
     val SelectedContentColor @Composable get() = DodamTheme.colors.staticWhite
     val IndicatorColor @Composable get() = DodamTheme.colors.primaryNormal
 
-    val ContainerShape @Composable get() = DodamTheme.shapes.xLarge
+    val ContainerShape @Composable get() = DodamTheme.shapes.large
     val IndicatorShape @Composable get() = DodamTheme.shapes.medium
 
     val BorderStroke @Composable get() = BorderStroke(1.dp, DodamTheme.colors.lineNormal)

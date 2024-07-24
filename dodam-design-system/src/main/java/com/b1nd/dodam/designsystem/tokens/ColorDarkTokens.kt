@@ -2,43 +2,45 @@ package com.b1nd.dodam.designsystem.tokens
 
 internal object ColorDarkTokens {
     object Primary {
-        val Normal = PaletteTokens.Blue500
-        val Assistive = PaletteTokens.Blue900
+        val Normal = PaletteTokens.Blue45
+        val Assistive = PaletteTokens.Blue45.copy(alpha = 0.3f)
     }
 
     object Label {
-        val Normal = PaletteTokens.Gray100
+        val Normal = PaletteTokens.Neutral99
         val Strong = PaletteTokens.White
-        val Neutral = PaletteTokens.Gray300
-        val Alternative = PaletteTokens.Gray400
-        val Assistive = PaletteTokens.Gray500
-        val Disabled = PaletteTokens.Gray400
+        val Neutral = PaletteTokens.Neutral95
+        val Alternative = PaletteTokens.Neutral90
+        val Assistive = PaletteTokens.Neutral70
+        val Disabled = PaletteTokens.Neutral30
     }
 
     object Background {
-        val Normal = PaletteTokens.Gray870
-        val Alternative = PaletteTokens.Gray900
+        val Normal = PaletteTokens.Neutral15
+        val Alternative = PaletteTokens.Neutral5
     }
 
     object Line {
-        val Normal = PaletteTokens.Gray700
-        val Neutral = PaletteTokens.Gray650
-        val Alternative = PaletteTokens.Gray750
+        val Normal = PaletteTokens.Neutral50
+        val Neutral = PaletteTokens.Neutral30
+        val Alternative = PaletteTokens.Neutral25
+    }
+
+    object Fill {
+        val Normal = PaletteTokens.Neutral20
+        val Neutral = PaletteTokens.Neutral25
+        val Alternative = PaletteTokens.Neutral30
+        val Assistive = PaletteTokens.Neutral60
     }
 
     object Status {
-        val Positive = PaletteTokens.Green400
-        val Negative = PaletteTokens.Red400
-        val Cautionary = PaletteTokens.Yellow400
+        val Positive = PaletteTokens.Green60
+        val Negative = PaletteTokens.Red50
+        val Cautionary = PaletteTokens.Yellow60
     }
 
     object Static {
         val White = PaletteTokens.White
         val Black = PaletteTokens.Black
-    }
-
-    object Component {
-        val Normal = PaletteTokens.Gray800
-        val Strong = PaletteTokens.Gray750
     }
 }
