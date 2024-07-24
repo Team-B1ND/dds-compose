@@ -24,7 +24,8 @@ import com.b1nd.dodam.designsystem.DodamTheme
 
 internal class BounceIndication(
     private val scale: Float,
-    private val radius: CornerBasedShape
+    private val radius: CornerBasedShape,
+    private val showBackground: Boolean,
 ) : Indication {
 
     @Composable
@@ -43,8 +44,12 @@ internal class BounceIndication(
             transitionSpec = { spring() },
             label = "BounceIndicationColor"
         ) {
-            if (it) {
-                BounceIndicationDefaults.DefaultColor.copy(alpha = 0.24f)
+            if (showBackground) {
+                if (it) {
+                    BounceIndicationDefaults.DefaultColor.copy(alpha = 0.24f)
+                } else {
+                    BounceIndicationDefaults.DefaultColor.copy(alpha = 0f)
+                }
             } else {
                 BounceIndicationDefaults.DefaultColor.copy(alpha = 0f)
             }
@@ -79,8 +84,9 @@ internal class BounceIndication(
 fun rememberBounceIndication(
     radius: CornerBasedShape = BounceIndicationDefaults.DefaultRadius,
     scale: Float = BounceIndicationDefaults.DEFAULT_SCALE,
+    showBackground: Boolean = true,
 ): Indication {
-    return remember { BounceIndication(scale, radius) }
+    return remember { BounceIndication(scale, radius, showBackground) }
 }
 
 internal object BounceIndicationDefaults {
