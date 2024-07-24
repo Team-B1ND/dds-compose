@@ -4,8 +4,11 @@ import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerBasedShape
@@ -14,9 +17,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
@@ -37,6 +44,7 @@ fun DodamButton(
     leadingIcon: DodamIcons? = null,
     trailingIcon: DodamIcons? = null,
     enabled: Boolean = true,
+    loading: Boolean = false,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
 ) {
     val buttonColors = buttonRole.buttonColors()
@@ -49,13 +57,15 @@ fun DodamButton(
                 enabled = enabled,
                 interactionSource = interactionSource,
                 indication = rememberBounceIndication(buttonConfig.shape),
-            ),
+            )
+            .takeIf { enabled } ?: Modifier.alpha(0.5f),
         shape = buttonConfig.shape,
         color = buttonColors.containerColor,
         contentColor = buttonColors.contentColor,
     ) {
         Row(
             modifier = Modifier
+                .defaultMinSize(minHeight = buttonConfig.minHeight)
                 .padding(buttonConfig.padding),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(
@@ -63,39 +73,161 @@ fun DodamButton(
                 Alignment.CenterHorizontally
             ),
         ) {
-            leadingIcon?.let { icon ->
-                Icon(
-                    modifier = Modifier.size(buttonConfig.iconSize),
-                    imageVector = icon.value,
-                    contentDescription = "Leading Icon",
-                )
-            }
+            if (loading) {
+                DodamLoadingDots()
+            } else {
+                leadingIcon?.let { icon ->
+                    Icon(
+                        modifier = Modifier.size(buttonConfig.iconSize),
+                        imageVector = icon.value,
+                        contentDescription = "Leading Icon",
+                    )
+                }
 
-            Text(
-                text = text,
-                style = buttonConfig.textStyle,
-            )
-
-            trailingIcon?.let { icon ->
-                Icon(
-                    modifier = Modifier.size(buttonConfig.iconSize),
-                    imageVector = icon.value,
-                    contentDescription = "Trailing Icon",
+                Text(
+                    text = text,
+                    style = buttonConfig.textStyle,
                 )
+
+                trailingIcon?.let { icon ->
+                    Icon(
+                        modifier = Modifier.size(buttonConfig.iconSize),
+                        imageVector = icon.value,
+                        contentDescription = "Trailing Icon",
+                    )
+                }
             }
         }
     }
 }
 
 @Composable
-@Preview
-@Preview(uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+@Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true, backgroundColor = 0xFF232424)
 private fun DodamButtonPreview() {
     DodamTheme {
-        DodamButton(
-            onClick = {},
-            text = "Button",
-        )
+        var loading by remember { mutableStateOf(false) }
+
+        Column(
+            modifier = Modifier.padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Large,
+
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Large,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Large,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+        }
     }
 }
 
@@ -115,14 +247,13 @@ enum class ButtonSize {
 private data class ButtonColors(
     val containerColor: Color,
     val contentColor: Color,
-    val disabledContainerColor: Color,
-    val disabledContentColor: Color,
 )
 
 @Immutable
 private data class ButtonConfig(
     val shape: CornerBasedShape,
     val padding: PaddingValues,
+    val minHeight: Dp,
     val contentSpacing: Dp,
     val iconSize: Dp,
     val textStyle: TextStyle,
@@ -136,22 +267,16 @@ private fun ButtonRole.buttonColors(): ButtonColors {
         ButtonRole.Primary -> ButtonColors(
             containerColor = colors.primaryNormal,
             contentColor = colors.staticWhite,
-            disabledContainerColor = colors.primaryAssistive,
-            disabledContentColor = colors.labelDisabled,
         )
 
         ButtonRole.Secondary -> ButtonColors(
             containerColor = colors.primaryAssistive,
             contentColor = colors.primaryNormal,
-            disabledContainerColor = colors.labelDisabled,
-            disabledContentColor = colors.labelDisabled,
         )
 
         ButtonRole.Assistive -> ButtonColors(
-            containerColor = colors.componentStrong,
+            containerColor = colors.fillNormal,
             contentColor = colors.labelNeutral,
-            disabledContainerColor = colors.labelDisabled,
-            disabledContentColor = colors.labelDisabled,
         )
     }
 }
@@ -163,6 +288,7 @@ private fun ButtonSize.buttonConfig(): ButtonConfig {
         ButtonSize.Large -> ButtonConfig(
             shape = ButtonDefaults.LargeButtonShape,
             padding = ButtonDefaults.LargeButtonPadding,
+            minHeight = 48.dp,
             contentSpacing = ButtonDefaults.LargeButtonContentSpacing,
             iconSize = ButtonDefaults.LargeButtonIconSize,
             textStyle = ButtonDefaults.LargeButtonTextStyle,
@@ -171,6 +297,7 @@ private fun ButtonSize.buttonConfig(): ButtonConfig {
         ButtonSize.Medium -> ButtonConfig(
             shape = ButtonDefaults.MediumButtonShape,
             padding = ButtonDefaults.MediumButtonPadding,
+            minHeight = 38.dp,
             contentSpacing = ButtonDefaults.MediumButtonContentSpacing,
             iconSize = ButtonDefaults.MediumButtonIconSize,
             textStyle = ButtonDefaults.MediumButtonTextStyle,
@@ -179,6 +306,7 @@ private fun ButtonSize.buttonConfig(): ButtonConfig {
         ButtonSize.Small -> ButtonConfig(
             shape = ButtonDefaults.SmallButtonShape,
             padding = ButtonDefaults.SmallButtonPadding,
+            minHeight = 32.dp,
             contentSpacing = ButtonDefaults.SmallButtonContentSpacing,
             iconSize = ButtonDefaults.SmallButtonIconSize,
             textStyle = ButtonDefaults.SmallButtonTextStyle,
@@ -189,7 +317,7 @@ private fun ButtonSize.buttonConfig(): ButtonConfig {
 private object ButtonDefaults {
     val LargeButtonShape @Composable get() = DodamTheme.shapes.medium
     val MediumButtonShape @Composable get() = DodamTheme.shapes.small
-    val SmallButtonShape @Composable get() = DodamTheme.shapes.xSmall
+    val SmallButtonShape @Composable get() = DodamTheme.shapes.extraSmall
 
     val LargeButtonPadding = PaddingValues(vertical = 13.dp, horizontal = 28.dp)
     val MediumButtonPadding = PaddingValues(vertical = 9.dp, horizontal = 20.dp)
@@ -203,7 +331,7 @@ private object ButtonDefaults {
     val MediumButtonIconSize = 18.dp
     val SmallButtonIconSize = 16.dp
 
-    val LargeButtonTextStyle @Composable get() = DodamTheme.typography.body1Strong
-    val MediumButtonTextStyle @Composable get() = DodamTheme.typography.body2Strong
-    val SmallButtonTextStyle @Composable get() = DodamTheme.typography.body3Strong
+    val LargeButtonTextStyle @Composable get() = DodamTheme.typography.body1Bold
+    val MediumButtonTextStyle @Composable get() = DodamTheme.typography.body2Bold
+    val SmallButtonTextStyle @Composable get() = DodamTheme.typography.caption1Bold
 }
