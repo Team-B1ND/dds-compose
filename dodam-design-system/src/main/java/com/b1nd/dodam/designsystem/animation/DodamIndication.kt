@@ -46,7 +46,7 @@ internal class BounceIndication(
         ) {
             if (showBackground) {
                 if (it) {
-                    BounceIndicationDefaults.DefaultColor.copy(alpha = 0.24f)
+                    BounceIndicationDefaults.DefaultColor.copy(alpha = 0.15f)
                 } else {
                     BounceIndicationDefaults.DefaultColor.copy(alpha = 0f)
                 }
