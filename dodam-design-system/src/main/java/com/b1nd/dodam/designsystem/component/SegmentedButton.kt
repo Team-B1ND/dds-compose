@@ -1,7 +1,6 @@
 package com.b1nd.dodam.designsystem.component
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateIntOffsetAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -18,15 +16,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -38,9 +33,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
-import com.b1nd.dodam.designsystem.foundation.DodamIcons
 import kotlinx.collections.immutable.ImmutableList
-import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
@@ -103,7 +96,8 @@ fun DodamSegmentedButton(
                             text = segment.text,
                             style = SegmentedButtonDefaults.TextStyle,
                             color = SegmentedButtonDefaults.SelectedTextColor.takeIf { segment.selected }
-                                ?: SegmentedButtonDefaults.UnselectedTextColor,
+                                ?: SegmentedButtonDefaults.UnselectedTextColor.takeIf { segment.enabled }
+                                ?: SegmentedButtonDefaults.UnselectedTextColor.copy(alpha = 0.5f),
                         )
                     }
                 }
@@ -129,7 +123,7 @@ private fun DodamSegmentedButtonPreview() {
             Segment(
                 selected = selectedIndex == index,
                 text = texts[index],
-                onClick = { selectedIndex = index }
+                onClick = { selectedIndex = index },
             )
         }.toImmutableList()
 
