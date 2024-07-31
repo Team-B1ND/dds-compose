@@ -38,10 +38,9 @@ import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun DodamNavigationBar(
-    selectedIndex: Int,
     modifier: Modifier = Modifier,
     type: NavigationBarType = NavigationBarType.Normal,
-    items: ImmutableList<NavigationBarItem>,
+    items: ImmutableList<DodamNavigationBarItem>,
 ) {
     Surface(
         modifier = modifier
@@ -62,7 +61,7 @@ fun DodamNavigationBar(
                 remember { (maxWidth - (NavigationBarDefaults.IndicatorSize * items.size)) / (items.size + 1) }
             val indicatorOffset by animateIntOffsetAsState(
                 targetValue = IntOffset(
-                    x = with(LocalDensity.current) { ((NavigationBarDefaults.IndicatorSize + spaceEvenlySize) * selectedIndex + spaceEvenlySize).toPx() }.toInt(),
+                    x = with(LocalDensity.current) { ((NavigationBarDefaults.IndicatorSize + spaceEvenlySize) * items.indexOfFirst { it.selected } + spaceEvenlySize).toPx() }.toInt(),
                     y = 0
                 ),
                 label = ""
@@ -122,7 +121,7 @@ enum class NavigationBarType {
 }
 
 @Immutable
-data class NavigationBarItem(
+data class DodamNavigationBarItem(
     val selected: Boolean,
     val icon: DodamIcons,
     val enable: Boolean = true,
@@ -157,7 +156,7 @@ private fun BottomNavigationPreview() {
         DodamIcons.Menu
     )
     val items = List(5) { index ->
-        NavigationBarItem(
+        DodamNavigationBarItem(
             selected = selectedIndex == index,
             icon = icons[index],
             onClick = { selectedIndex = index }
@@ -167,7 +166,6 @@ private fun BottomNavigationPreview() {
     DodamTheme {
         DodamNavigationBar(
             items = items,
-            selectedIndex = selectedIndex,
             type = NavigationBarType.Border
         )
     }

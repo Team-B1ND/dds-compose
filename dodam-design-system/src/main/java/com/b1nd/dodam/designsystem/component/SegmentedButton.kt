@@ -38,9 +38,8 @@ import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 fun DodamSegmentedButton(
-    selectedIndex: Int,
     modifier: Modifier = Modifier,
-    segments: ImmutableList<Segment>,
+    segments: ImmutableList<DodamSegment>,
 ) {
     Surface(
         modifier = modifier
@@ -56,10 +55,10 @@ fun DodamSegmentedButton(
             val segmentWidth = remember { maxWidth / segments.size }
             val indicatorOffset by animateIntOffsetAsState(
                 targetValue = IntOffset(
-                    x = with(LocalDensity.current) { (segmentWidth * selectedIndex).toPx() }.toInt(),
+                    x = with(LocalDensity.current) { (segmentWidth * segments.indexOfFirst { it.selected }).toPx() }.toInt(),
                     y = 0
                 ),
-                label = ""
+                label = "",
             )
             Box(
                 modifier = Modifier
@@ -120,7 +119,7 @@ private fun DodamSegmentedButtonPreview() {
             "Fifth",
         )
         val items = List(5) { index ->
-            Segment(
+            DodamSegment(
                 selected = selectedIndex == index,
                 text = texts[index],
                 onClick = { selectedIndex = index },
@@ -128,14 +127,13 @@ private fun DodamSegmentedButtonPreview() {
         }.toImmutableList()
 
         DodamSegmentedButton(
-            selectedIndex = selectedIndex,
             segments = items
         )
     }
 }
 
 @Immutable
-data class Segment(
+data class DodamSegment(
     val selected: Boolean,
     val onClick: () -> Unit,
     val text: String,
