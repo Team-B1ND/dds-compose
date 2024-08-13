@@ -10,6 +10,7 @@ import com.b1nd.dodam.designsystem.resources.ic_calendar
 import com.b1nd.dodam.designsystem.resources.ic_checkmark
 import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle_filled
+import com.b1nd.dodam.designsystem.resources.ic_chevron_left
 import com.b1nd.dodam.designsystem.resources.ic_chevron_right
 import com.b1nd.dodam.designsystem.resources.ic_door_open
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
@@ -49,6 +50,7 @@ enum class DodamIcons {
     CheckmarkCircle,
     CheckmarkCircleFilled,
     ChevronRight,
+    ChevronLeft,
     Trash,
     MagnifyingGlass,
     Gear;
@@ -77,6 +79,7 @@ enum class DodamIcons {
             CheckmarkCircle -> vectorResource(Res.drawable.ic_checkmark_circle)
             CheckmarkCircleFilled -> vectorResource(Res.drawable.ic_checkmark_circle_filled)
             ChevronRight -> vectorResource(Res.drawable.ic_chevron_right)
+            ChevronLeft -> vectorResource(Res.drawable.ic_chevron_left)
             Trash -> vectorResource(Res.drawable.ic_trash)
             MagnifyingGlass -> vectorResource(Res.drawable.ic_magnifyingglass)
             Gear -> vectorResource(Res.drawable.ic_gear)
