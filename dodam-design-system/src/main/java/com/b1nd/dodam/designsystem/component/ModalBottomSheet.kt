@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.BottomSheetScaffold
@@ -67,6 +68,7 @@ fun DodamModalBottomSheet(
                 title()
                 Spacer(modifier = Modifier.height(4.dp))
                 content()
+                Spacer(modifier = Modifier.navigationBarsPadding())
             }
         }
     )
