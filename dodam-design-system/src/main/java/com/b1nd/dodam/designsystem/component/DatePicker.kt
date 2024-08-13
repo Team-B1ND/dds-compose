@@ -137,31 +137,23 @@ fun DodamDatePickerBottomSheet(
     onClickDate: (date: LocalDate, isValid: Boolean) -> Unit,
     onClickSuccess: () -> Unit,
 ) {
-    ModalBottomSheet(
+    DodamModalBottomSheet(
         sheetState = sheetState,
         onDismissRequest = onDismissRequest,
-        containerColor = DodamDatePickerDefaults.ContainerColor
-    ) {
-        Surface(
-            color = DodamDatePickerDefaults.ContainerColor,
-            shape = DodamTheme.shapes.extraLarge,
-        ) {
+        title = {
+            Text(
+                modifier = Modifier.align(Alignment.Start),
+                text = title,
+                style = DodamDatePickerDefaults.TitleTextStyle,
+                color = DodamDatePickerDefaults.TitleTextColor
+            )
+        },
+        content = {
             Column(
                 modifier = Modifier
-                    .padding(
-                        bottom = 24.dp,
-                        start = 24.dp,
-                        end = 24.dp
-                    )
                     .fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    modifier = Modifier.align(Alignment.Start),
-                    text = title,
-                    style = DodamDatePickerDefaults.TitleTextStyle,
-                    color = DodamDatePickerDefaults.TitleTextColor
-                )
                 DodamDatePicker(
                     modifier = modifier,
                     state = state,
@@ -181,7 +173,7 @@ fun DodamDatePickerBottomSheet(
                 )
             }
         }
-    }
+    )
 }
 
 @Composable
@@ -205,9 +197,6 @@ fun DodamDatePicker(
             onClickNextMonth = onClickNextMonth,
         )
         Spacer(modifier = Modifier.height(16.dp))
-        LaunchedEffect(key1 = state) {
-            Log.d("TAG", "DodamDatePicker: ${state.selectedDate}")
-        }
         DodamTimePickerMonth(
             month = state.month,
             selectDate = state.selectedDate,
