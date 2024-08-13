@@ -22,14 +22,18 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -41,6 +45,7 @@ import androidx.compose.ui.window.Dialog
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.DodamTheme.colors
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.launch
 
 @Composable
 fun DodamTimePickerDialog(
@@ -52,9 +57,6 @@ fun DodamTimePickerDialog(
     onSelectTime: (hour: Int, minute: Int) -> Unit,
     onDismissRequest: () -> Unit,
 ) {
-    val hours = (1..23).toImmutableList()
-    val minutes = (0..59).toImmutableList()
-
     var chooseHour by remember { mutableIntStateOf(startTime) }
     var chooseMinute by remember { mutableIntStateOf(startMinute) }
 
@@ -75,49 +77,16 @@ fun DodamTimePickerDialog(
                     style = TimePickerDefaults.TitleTextStyle,
                 )
                 Spacer(modifier = Modifier.height(16.dp))
-                Box(modifier = Modifier) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.Center)
-                            .fillMaxWidth()
-                            .height(44.dp)
-                            .absoluteOffset(y = (-6).dp)
-                            .background(
-                                color = TimePickerDefaults.IndicatorColor,
-                                shape = TimePickerDefaults.IndicatorShape,
-                            ),
-                        contentAlignment = Alignment.Center,
-                    ) {
-                        Text(
-                            text = ":",
-                            color = TimePickerDefaults.ActiveTextColor,
-                            style = TimePickerDefaults.ActiveTextColumnTextStyle,
-                        )
+                DodamTimePicker(
+                    startTime = startTime,
+                    startMinute = startMinute,
+                    onHourChanged = {
+                        chooseHour = it
+                    },
+                    onMinChanged =  {
+                        chooseMinute = it
                     }
-                    Row(
-                        modifier = Modifier.align(Alignment.Center),
-                    ) {
-                        DodamWheelRangePicker(
-                            startIndex = startTime - 1,
-                            items = hours,
-                            size = DpSize(36.dp, 199.dp),
-                            onScrollFinished = {
-                                chooseHour = it % 24
-                                null
-                            },
-                        )
-                        Spacer(modifier = Modifier.width(55.dp))
-                        DodamWheelRangePicker(
-                            startIndex = startMinute,
-                            items = minutes,
-                            size = DpSize(36.dp, 199.dp),
-                            onScrollFinished = {
-                                chooseMinute = it % 60
-                                null
-                            },
-                        )
-                    }
-                }
+                )
                 Spacer(modifier = Modifier.height(16.dp))
                 Row {
                     Spacer(modifier = Modifier.weight(1f))
@@ -131,6 +100,114 @@ fun DodamTimePickerDialog(
                     )
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun DodamTimePickerBottomSheet(
+    modifier: Modifier = Modifier,
+    onDismissRequest: () -> Unit,
+    sheetState: SheetState = rememberModalBottomSheetState(),
+    startTime: Int = 1,
+    startMinute: Int = 0,
+    titleText: String = "외출 일시",
+    buttonText: String = "선택",
+    onSelectTime: (hour: Int, minute: Int) -> Unit,
+) {
+    var chooseHour by remember { mutableIntStateOf(startTime) }
+    var chooseMinute by remember { mutableIntStateOf(startMinute) }
+
+    DodamModalBottomSheet(
+        modifier = modifier,
+        sheetState = sheetState,
+        onDismissRequest = onDismissRequest,
+        title = {
+            Text(
+                text = titleText,
+                color = TimePickerDefaults.TitleTextColor,
+                style = TimePickerDefaults.TitleTextStyle,
+            )
+        },
+        content = {
+            Spacer(modifier = Modifier.height(12.dp))
+            DodamTimePicker(
+                startTime = startTime,
+                startMinute = startMinute,
+                onHourChanged = {
+                    chooseHour = it
+                },
+                onMinChanged =  {
+                    chooseMinute = it
+                }
+            )
+            Spacer(modifier = Modifier.height(16.dp))
+            DodamButton(
+                modifier = Modifier.fillMaxWidth(),
+                onClick = {
+                    onSelectTime(chooseHour, chooseMinute)
+                },
+                text = buttonText,
+                buttonSize = ButtonSize.Large,
+                buttonRole = ButtonRole.Primary
+            )
+        }
+    )
+}
+
+@Composable
+internal fun DodamTimePicker(
+    modifier: Modifier = Modifier,
+    startTime: Int = 1,
+    startMinute: Int = 0,
+    onHourChanged: (Int) -> Unit,
+    onMinChanged: (Int) -> Unit
+) {
+    val hours = (1..23).toImmutableList()
+    val minutes = (0..59).toImmutableList()
+
+    Box(modifier = modifier) {
+        Box(
+            modifier = Modifier
+                .align(Alignment.Center)
+                .fillMaxWidth()
+                .height(44.dp)
+                .absoluteOffset(y = (-6).dp)
+                .background(
+                    color = TimePickerDefaults.IndicatorColor,
+                    shape = TimePickerDefaults.IndicatorShape,
+                ),
+            contentAlignment = Alignment.Center,
+        ) {
+            Text(
+                text = ":",
+                color = TimePickerDefaults.ActiveTextColor,
+                style = TimePickerDefaults.ActiveTextColumnTextStyle,
+            )
+        }
+        Row(
+            modifier = Modifier.align(Alignment.Center),
+        ) {
+            DodamWheelRangePicker(
+                startIndex = startTime - 1,
+                items = hours,
+                size = DpSize(36.dp, 199.dp),
+                onScrollFinished = {
+                    onHourChanged(it % 24)
+                    null
+                },
+            )
+            Spacer(modifier = Modifier.width(55.dp))
+            DodamWheelRangePicker(
+                startIndex = startMinute,
+                items = minutes,
+                size = DpSize(36.dp, 199.dp),
+                onScrollFinished = {
+                    onMinChanged(it % 60)
+                    null
+                },
+            )
         }
     }
 }
@@ -230,15 +307,36 @@ private fun Int.toTimeString(): String = this.toString().padStart(2, '0')
 @Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
 @Preview(uiMode = UI_MODE_NIGHT_YES, showBackground = true, backgroundColor = 0xFF232424)
 private fun DodamDatePickerPreview() {
+    val sheetState = rememberModalBottomSheetState(
+        skipPartiallyExpanded = true
+    )
+    val coroutineScope = rememberCoroutineScope()
+    var isShowDialog by remember { mutableStateOf(true) }
+    var isShowBottomSheet by remember { mutableStateOf(true) }
+
 
     DodamTheme {
-        DodamTimePickerDialog(
-            onSelectTime = { hour, minute ->
-                Log.d("TAG", "DodamDatePickerPreview: $hour $minute")
-            },
-            onDismissRequest = {
-                
-            }// 이거 코드 라이브러리에 있는거임 ㅇㅇ
-        )
+        if (isShowDialog) {
+            DodamTimePickerDialog(
+                onSelectTime = { hour, minute ->
+                    Log.d("TAG", "DodamDatePickerPreview: $hour $minute")
+                },
+                onDismissRequest = {
+                    isShowDialog = false
+                }// 이거 코드 라이브러리에 있는거임 ㅇㅇ
+            )
+        }
+        if (isShowBottomSheet) {
+            DodamTimePickerBottomSheet(
+                sheetState = sheetState,
+                onDismissRequest = {
+                    isShowBottomSheet = false
+                    coroutineScope.launch {
+                        sheetState.hide()
+                    }
+                },
+                onSelectTime = { hour, minute -> }
+            )
+        }
     }
 }
