@@ -37,11 +37,11 @@ fun rememberIcColoredExclamationMarkCircle(
     				strokeLineMiter = 1.0f,
     				pathFillType = PathFillType.NonZero
 				) {
-					moveTo(0f, 0f)
-					horizontalLineTo(12f)
-					verticalLineTo(12f)
-					horizontalLineTo(0f)
-					verticalLineTo(0f)
+					moveTo(6f, 6f)
+					horizontalLineTo(18f)
+					verticalLineTo(18f)
+					horizontalLineTo(6f)
+					verticalLineTo(6f)
 					close()
 }
 				group {
