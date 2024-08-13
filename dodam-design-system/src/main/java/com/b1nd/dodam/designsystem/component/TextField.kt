@@ -55,6 +55,7 @@ import androidx.compose.ui.unit.toSize
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.R
 import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
+import com.b1nd.dodam.designsystem.foundation.icons.rememberIcColoredExclamationMarkCircle
 
 sealed interface InputType {
     data object Default : InputType
@@ -212,12 +213,22 @@ fun DodamTextField(
                             ),
                         contentAlignment = Alignment.Center
                     ) {
-                        Image(
-                            modifier = Modifier.size(24.dp),
-                            painter = painterResource(id = if (isError) R.drawable.ic_colored_exclamationmark_circle else R.drawable.ic_xmark_circle),
-                            contentDescription = null,
-                            colorFilter = ColorFilter.tint(if (isError) DodamTextFieldDefaults.errorColor else DodamTextFieldDefaults.LabelColor)
-                        )
+                        if (isError) {
+                            Image(
+                                modifier = Modifier.size(24.dp),
+                                imageVector = rememberIcColoredExclamationMarkCircle(
+                                    backgroundColor = DodamTextFieldDefaults.errorColor
+                                ),
+                                contentDescription = null
+                            )
+                        } else {
+                            Image(
+                                modifier = Modifier.size(24.dp),
+                                painter = painterResource(id = R.drawable.ic_xmark_circle),
+                                contentDescription = null,
+                                colorFilter = ColorFilter.tint(DodamTextFieldDefaults.LabelColor)
+                            )
+                        }
                     }
                 }
             }
