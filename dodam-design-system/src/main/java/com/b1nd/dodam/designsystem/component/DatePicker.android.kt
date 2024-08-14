@@ -118,39 +118,6 @@ internal class CalendarModelImpl(private val locale: CalendarLocale) : CalendarM
     }
 }
 
-internal actual fun formatWithSkeleton(
-    utcTimeMillis: Long,
-    skeleton: String,
-    locale: CalendarLocale,
-    cache: MutableMap<String, Any>,
-): String {
-    val pattern =
-        cache
-            .getOrPut(key = "S:$skeleton${locale.toLanguageTag()}") {
-                DateFormat.getBestDateTimePattern(locale, skeleton)
-            }
-            .toString()
-    val formatter = getCachedDateTimeFormatter(pattern, locale, cache)
-    return Instant.ofEpochMilli(utcTimeMillis)
-        .atZone(utcTimeZoneId)
-        .toLocalDate()
-        .format(formatter)
-}
-
-private fun getCachedDateTimeFormatter(
-    pattern: String,
-    locale: CalendarLocale,
-    cache: MutableMap<String, Any>
-): DateTimeFormatter {
-    // Prepend the pattern and language tag with a "P" to avoid cache collisions when the
-    // called already cached a string as value when the pattern equals to the skeleton it
-    // was created from.
-    return cache.getOrPut(key = "P:$pattern${locale.toLanguageTag()}") {
-        DateTimeFormatter.ofPattern(pattern, locale)
-            .withDecimalStyle(DecimalStyle.of(locale))
-    } as DateTimeFormatter
-}
-
 internal val utcTimeZoneId: ZoneId = ZoneId.of("UTC")
 
 

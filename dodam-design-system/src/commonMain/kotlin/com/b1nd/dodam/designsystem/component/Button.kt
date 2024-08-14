@@ -207,3 +207,133 @@ private object ButtonDefaults {
     val MediumButtonTextStyle @Composable get() = DodamTheme.typography.body2Bold()
     val SmallButtonTextStyle @Composable get() = DodamTheme.typography.caption1Bold()
 }
+
+
+@Composable
+@Preview
+private fun DodamButtonPreview() {
+    DodamTheme {
+        var loading by remember { mutableStateOf(false) }
+
+        Column(
+            modifier = Modifier.padding(24.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Large,
+
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Large,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Large,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Large,
+                    enabled = false,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Medium,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Primary,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Secondary,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+
+                DodamButton(
+                    onClick = { loading = true },
+                    buttonRole = ButtonRole.Assistive,
+                    buttonSize = ButtonSize.Small,
+                    text = "Button",
+                    loading = loading
+                )
+            }
+        }
+    }
+}
