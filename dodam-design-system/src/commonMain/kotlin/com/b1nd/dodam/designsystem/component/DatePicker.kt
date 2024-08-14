@@ -19,16 +19,10 @@ import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.ReadOnlyComposable
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.Saver
 import androidx.compose.runtime.saveable.listSaver
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
@@ -45,6 +39,7 @@ import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
+import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun DodamDatePickerDialog(
@@ -292,6 +287,7 @@ private fun DodamTimePickerMonth(
                 ) {
                     for (dayIndex in 0 until DAYS_IN_WEEK) {
                         val cellIndex = weekIndex * DAYS_IN_WEEK + dayIndex
+                        // 3
                         if (
                             cellIndex < month.daysFromStartOfWeekToFirstOfMonth ||
                             cellIndex >=
@@ -542,13 +538,6 @@ fun rememberDodamDatePickerState(
 internal const val MAX_CALENDAR_ROWS = 6
 internal const val DAYS_IN_WEEK = 7
 
-internal expect fun formatWithSkeleton(
-    utcTimeMillis: Long,
-    skeleton: String,
-    locale: CalendarLocale,
-    cache: MutableMap<String, Any>
-): String
-
 expect class CalendarLocale
 
 @Composable
@@ -556,3 +545,55 @@ expect class CalendarLocale
 internal expect fun defaultLocale(): CalendarLocale
 
 internal expect fun createCalendarModel(locale: CalendarLocale): CalendarModel
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+@Preview
+private fun DodamDatePickerPreview() {
+    val datePickerState = rememberDodamDatePickerState()
+    val sheetState = rememberModalBottomSheetState()
+    val coroutineScope = rememberCoroutineScope()
+    var isShowDialog by remember { mutableStateOf(true) }
+    LaunchedEffect(key1 = true) {
+        sheetState.show()
+    }
+    DodamTheme {
+//        if (isShowDialog) {
+//            DodamDatePickerDialog(
+//                state = datePickerState,
+//                onDismissRequest = {
+//                    isShowDialog = false
+//                },
+//                onClickDate = { date, isValid ->
+//                    datePickerState.selectedDate = date
+//                },
+//                onClickSuccess = {
+//                    isShowDialog = false
+//                }
+//            )
+//        }
+        DodamDatePicker(
+            state = datePickerState,
+            onClickDate = { date, isValid ->
+                datePickerState.selectedDate = date
+            },
+        )
+
+//        DodamDatePickerBottomSheet(
+//            sheetState = sheetState,
+//            state = datePickerState,
+//            onDismissRequest = {
+//                coroutineScope.launch {
+//                    sheetState.hide()
+//                }
+//            },
+//            onClickDate = { date, isValid ->
+//                coroutineScope.launch {
+//                    datePickerState.selectedDate = date
+//                }
+//            },
+//            onClickSuccess = {}
+//        )
+    }
+}
