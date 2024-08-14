@@ -332,3 +332,6 @@ xcuserdata
 
 *.xcodeproj
 *.xcworkspace
+
+# publish key
+*.gpg
