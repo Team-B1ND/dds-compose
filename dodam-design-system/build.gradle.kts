@@ -1,3 +1,5 @@
+import com.vanniktech.maven.publish.SonatypeHost
+import org.jetbrains.compose.ComposeBuildConfig.composeVersion
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
@@ -6,7 +8,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.multiplatform)
-    id("org.jetbrains.compose")
+    alias(libs.plugins.multiplatform.maven)
+    alias(libs.plugins.jetbrains.compose)
     id("maven-publish")
 }
 
@@ -32,16 +35,20 @@ kotlin {
     }
 
     sourceSets {
+        androidMain.dependencies {
+            implementation(libs.compose.ui.tooling.preview)
+        }
+
         commonMain.dependencies {
             implementation(libs.androidx.core)
             implementation(libs.kotlinx.collections.immutable)
-            implementation(compose.runtime)
-            implementation(compose.foundation)
-            implementation(compose.material3)
-            implementation(compose.ui)
-            implementation(compose.components.resources)
-            implementation(compose.animation)
-            implementation(compose.components.uiToolingPreview)
+            implementation(libs.compose.runtime)
+            implementation(libs.compose.foundation)
+            implementation(libs.compose.material3)
+            implementation(libs.compose.ui)
+            implementation(libs.compose.components.resources)
+            implementation(libs.compose.animation)
+            implementation(libs.compose.components.ui.tooling.preview)
         }
     }
 
@@ -53,19 +60,48 @@ compose.resources {
     generateResClass = always
 }
 
-//publishing {
-//    publications {
-//        register<MavenPublication>("release") {
-//            groupId = "com.b1nd.dodam"
-//            artifactId = "dodam-design-system"
-//            version = "0.1.18"
-//
-//            afterEvaluate {
-//                from(components["release"])
-//            }
-//        }
-//    }
-//}
+mavenPublishing {
+
+    coordinates(
+        groupId = "com.b1nd.dodam",
+        artifactId = "dodam-design-system",
+        version = "1.0.0"
+    )
+
+    pom {
+        name.set("CMM Library for Dodam Compose Design System")
+        description.set("This library is an Android Compose Multi-platform Design System based on the Dodam Dodam Design System.")
+        inceptionYear.set("2024")
+        url.set("https://github.com/Team-B1ND/dds-compose")
+
+        licenses {
+            license {
+                name.set("MIT")
+                url.set("https://opensource.org/licenses/MIT")
+            }
+        }
+
+        // Specify SCM information
+        scm {
+            url.set("https://github.com/Team-B1ND/dds-compose")
+        }
+
+        // Specify Developer infomation
+        developers {
+            developer {
+                id = "Team-B1ND"
+                email = "mdev_team@dgsw.hs.kr"
+                name = "Team-B1ND"
+            }
+        }
+    }
+
+    // Configure publishing to Maven Central
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    // Enable GPG signing for all publications
+    signAllPublications()
+}
 
 android {
     namespace = "com.b1nd.dodam.designsystem"
@@ -91,9 +127,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
     }
-//    kotlinOptions {
-//        jvmTarget = JavaVersion.VERSION_21.toString()
-//    }
+
     composeCompiler {
         enableStrongSkippingMode = true
 
@@ -103,18 +137,4 @@ android {
     buildFeatures {
         compose = true
     }
-}
-
-dependencies {
-    implementation(libs.androidx.core)
-    implementation(libs.kotlinx.collections.immutable)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.compose.foundation)
-    implementation(libs.androidx.compose.runtime)
-    implementation(libs.androidx.compose.animation)
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.tooling)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.ui.android)
 }

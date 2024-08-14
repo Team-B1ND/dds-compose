@@ -14,7 +14,7 @@ compose-plugin = "1.6.11"
 
 # gradle plugin
 agp = "8.2.2"
-maven = "2.1"
+maven = "0.29.0"
 
 # android
 androidx-core = "1.13.1"
@@ -37,11 +37,21 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-core = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core" }
 androidx-ui-android = { group = "androidx.compose.ui", name = "ui-android", version.ref = "uiAndroid" }
 
+compose-runtime = { group = "org.jetbrains.compose.runtime", name = "runtime", version.ref = "compose-plugin"}
+compose-foundation = { group = "org.jetbrains.compose.foundation", name = "foundation", version.ref = "compose-plugin"}
+compose-material3 = { group = "org.jetbrains.compose.material3", name = "material3", version.ref = "compose-plugin"}
+compose-ui = { group = "org.jetbrains.compose.ui", name = "ui", version.ref = "compose-plugin"}
+compose-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "compose-plugin"}
+compose-animation = { group = "org.jetbrains.compose.animation", name = "animation", version.ref = "compose-plugin"}
+compose-components-ui-tooling-preview = { group = "org.jetbrains.compose.components", name = "components-ui-tooling-preview", version.ref = "compose-plugin"}
+compose-ui-tooling-preview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-plugin"}
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-android-maven = { id = "com.github.dcendents.android-maven", version.ref = "maven" }
+multiplatform-maven = { id = "com.vanniktech.maven.publish", version.ref = "maven" }
 kotlin-multiplatform = { id =  "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
