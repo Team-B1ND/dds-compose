@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/version-0.1.10-blue)
+![version](https://img.shields.io/badge/version-1.0.0-blue)
 
 ## How to use?
 in your project
@@ -7,7 +7,6 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenCentral()
-        maven("https://jitpack.io")
     }
 }
 ```
@@ -15,5 +14,5 @@ dependencyResolutionManagement {
 module
 ```gradle
 dependencies {
-  implementation("com.github.Team-B1ND:dds-android:{version}")
+  implementation("com.b1nd.dodam:dodam-design-system:{version}")
 }
