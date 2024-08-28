@@ -36,7 +36,8 @@ kotlin {
 
     sourceSets {
         androidMain.dependencies {
-            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.androidx.compose.ui.tooling.preview)
+            implementation(libs.androidx.compose.ui.tooling)
         }
 
         commonMain.dependencies {
@@ -65,7 +66,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.b1nd.dodam",
         artifactId = "dodam-design-system",
-        version = "1.0.0"
+        version = "1.0.1"
     )
 
     pom {
