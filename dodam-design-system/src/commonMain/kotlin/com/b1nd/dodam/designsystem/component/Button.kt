@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
+import com.b1nd.dodam.designsystem.internal.`if`
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -58,7 +59,9 @@ fun DodamButton(
                 interactionSource = interactionSource,
                 indication = rememberBounceIndication(buttonConfig.shape),
             )
-            .takeIf { enabled } ?: Modifier.alpha(0.5f),
+            .`if`(!enabled) {
+                alpha(0.5f)
+            },
         shape = buttonConfig.shape,
         color = buttonColors.containerColor,
         contentColor = buttonColors.contentColor,
