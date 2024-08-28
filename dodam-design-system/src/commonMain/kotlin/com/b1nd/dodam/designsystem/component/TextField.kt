@@ -90,7 +90,7 @@ fun DodamTextField(
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
-    val currentInputType by remember {
+    val currentInputType by remember(isFocus, value, isError) {
         derivedStateOf {
             focusStateAsInputType(
                 isFocused = isFocus,
@@ -297,7 +297,7 @@ fun DodamTextField(
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
-    val currentInputType by remember {
+    val currentInputType by remember(isFocus, value, isError) {
         derivedStateOf {
             focusStateAsInputType(
                 isFocused = isFocus,
@@ -504,7 +504,7 @@ fun DodamFilledTextField(
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
-    val currentInputType by remember {
+    val currentInputType by remember(isFocus, value, isError) {
         derivedStateOf {
             focusStateAsInputType(
                 isFocused = isFocus,
@@ -699,7 +699,7 @@ fun DodamFilledTextField(
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
-    val currentInputType by remember {
+    val currentInputType by remember(isFocus, value, isError) {
         derivedStateOf {
             focusStateAsInputType(
                 isFocused = isFocus,
