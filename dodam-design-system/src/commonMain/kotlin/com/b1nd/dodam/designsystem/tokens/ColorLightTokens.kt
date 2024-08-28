@@ -18,6 +18,7 @@ internal object ColorLightTokens {
     object Background {
         val Normal = PaletteTokens.White
         val Alternative = PaletteTokens.Neutral99
+        val Neutral = PaletteTokens.Neutral10
     }
 
     object Line {

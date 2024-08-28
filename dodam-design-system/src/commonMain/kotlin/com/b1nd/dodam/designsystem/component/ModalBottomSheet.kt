@@ -19,6 +19,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -30,14 +33,17 @@ fun DodamModalBottomSheet(
     modifier: Modifier = Modifier,
     title: @Composable ColumnScope.() -> Unit,
     content: @Composable ColumnScope.() -> Unit,
+    containerColor: Color = DodamTheme.colors.backgroundNormal,
+    shape: Shape = DodamTheme.shapes.extraLarge,
+    space: Dp = 4.dp,
     sheetState: SheetState = rememberModalBottomSheetState(),
 ) {
     ModalBottomSheet(
         onDismissRequest = onDismissRequest,
         sheetState = sheetState,
         modifier = modifier,
-        containerColor = DodamTheme.colors.backgroundNormal,
-        shape = DodamTheme.shapes.extraLarge,
+        containerColor = containerColor,
+        shape = shape,
         dragHandle = {
             Surface(
                 modifier = Modifier.padding(
@@ -66,7 +72,7 @@ fun DodamModalBottomSheet(
                     )
             ) {
                 title()
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(space))
                 content()
                 Spacer(modifier = Modifier.navigationBarsPadding())
             }
