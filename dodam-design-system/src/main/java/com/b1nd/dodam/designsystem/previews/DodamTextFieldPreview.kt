@@ -25,6 +25,7 @@ import com.b1nd.dodam.designsystem.component.DodamTextField
 private fun DodamTextFieldPreview() {
     val focusManager = LocalFocusManager.current
     var value by remember { mutableStateOf("") }
+    var isError by remember { mutableStateOf(false) }
     DodamTheme {
         Column(
             modifier = Modifier
@@ -118,10 +119,12 @@ private fun DodamTextFieldPreview() {
                     value = it
                 },
                 label = "Label text",
-                isError = true,
+                isError = isError,
                 enabled = true,
                 supportText = "Supporting text",
-                onClickRemoveRequest = {}
+                onClickRemoveRequest = {
+                    isError = !isError
+                }
             )
         }
     }
