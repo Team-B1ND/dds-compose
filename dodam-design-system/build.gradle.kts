@@ -38,6 +38,7 @@ kotlin {
         androidMain.dependencies {
             implementation(libs.androidx.compose.ui.tooling.preview)
             implementation(libs.androidx.compose.ui.tooling)
+            implementation(libs.coil.network.okhttp)
         }
 
         commonMain.dependencies {
@@ -50,6 +51,19 @@ kotlin {
             implementation(libs.compose.components.resources)
             implementation(libs.compose.animation)
             implementation(libs.compose.components.ui.tooling.preview)
+
+            implementation(libs.kotlinx.serialization.json)
+            implementation(libs.kotlinx.io.core)
+            implementation(libs.kotlinx.io.bytestring)
+
+            implementation(libs.coil)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
+            implementation(libs.ktor.client.core)
+        }
+
+        iosMain.dependencies {
+            implementation(libs.ktor.client.darwin)
         }
     }
 

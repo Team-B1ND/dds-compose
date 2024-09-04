@@ -8,6 +8,8 @@ versionCode = "1"
 # kotlin
 kotlin = "2.0.0"
 kotlinx-collections-immutable = "0.3.7"
+kotlinx-io = "0.5.3"
+kotlinx-serialization-json = "1.6.2"
 
 # compose
 compose-plugin = "1.6.11"
@@ -22,8 +24,16 @@ androidx-activity-compose = "1.9.0"
 androidx-compose-bom = "2024.06.00"
 uiAndroid = "1.6.8"
 
+# third
+
+coil = "3.0.0-alpha06"
+ktor = "3.0.0-wasm2"
+
 [libraries]
 kotlin = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+kotlinx-io-bytestring = {group = "org.jetbrains.kotlinx", name = "kotlinx-io-bytestring", version.ref = "kotlinx-io" }
+kotlinx-io-core = {group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
 kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinx-collections-immutable" }
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidx-compose-bom" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
@@ -45,6 +55,15 @@ compose-components-resources = { group = "org.jetbrains.compose.components", nam
 compose-animation = { group = "org.jetbrains.compose.animation", name = "animation", version.ref = "compose-plugin"}
 compose-components-ui-tooling-preview = { group = "org.jetbrains.compose.components", name = "components-ui-tooling-preview", version.ref = "compose-plugin"}
 compose-ui-tooling-preview = { group = "org.jetbrains.compose.ui", name = "ui-tooling-preview", version.ref = "compose-plugin"}
+
+
+ktor-client-core = { group = "io.ktor", name = "ktor-client-core", version.ref = "ktor" }
+ktor-client-darwin = { group = "io.ktor", name = "ktor-client-darwin", version.ref = "ktor" }
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-compose-core = { group = "io.coil-kt.coil3", name = "coil-compose-core" , version.ref = "coil"}
+coil-network-ktor = { group = "io.coil-kt.coil3", name = "coil-network-ktor" , version.ref = "coil"}
+coil-network-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp" , version.ref = "coil"}
+coil = { group = "io.coil-kt.coil3", name = "coil" , version.ref = "coil"}
 
 
 [plugins]
