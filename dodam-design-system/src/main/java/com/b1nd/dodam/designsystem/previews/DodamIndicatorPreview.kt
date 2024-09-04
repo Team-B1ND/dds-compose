@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.Text
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
+import com.b1nd.dodam.designsystem.component.DodamCircularProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamLinerProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamPageIndicator
 
@@ -50,9 +52,15 @@ private fun DodamIndicatorPreview() {
             )
             Spacer(modifier = Modifier.height(8.dp))
             DodamLinerProgressIndicator(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth(),
                 progress = 0.3f,
                 disabled = true
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            DodamCircularProgressIndicator(
+                modifier = Modifier.size(50.dp),
+                progress = 0.5f,
             )
         }
     }
