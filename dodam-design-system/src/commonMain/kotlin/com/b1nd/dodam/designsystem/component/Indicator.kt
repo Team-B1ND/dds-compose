@@ -1,6 +1,7 @@
 package com.b1nd.dodam.designsystem.component
 
 import androidx.annotation.FloatRange
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -19,6 +20,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -83,8 +88,33 @@ fun DodamLinerProgressIndicator(
         )
         Spacer(Modifier.weight(1f-progress))
     }
+}
 
+@Composable
+fun DodamCircularProgressIndicator(
+    modifier: Modifier,
+    @FloatRange(from = 0.0, to = 1.0) progress: Float,
+    disabled: Boolean = false,
+) {
+    require(progress in 0f..1f) { "Progress must range from 0 to 1." }
 
+    val lineAlternative = DodamTheme.colors.lineAlternative
+    val arcColor = if (disabled) DodamTheme.colors.lineNormal else DodamTheme.colors.primaryNormal
+    Canvas(modifier = modifier) {
+        drawCircle(
+            color = lineAlternative,
+            radius = size.minDimension / 2,
+            style = Stroke(width = 10.dp.toPx())
+        )
+
+        drawArc(
+            color = arcColor,
+            startAngle = -90f,
+            sweepAngle = 360f * progress,
+            useCenter = false,
+            style = Stroke(width = 10.dp.toPx(), cap = StrokeCap.Round)
+        )
+    }
 }
 
 
