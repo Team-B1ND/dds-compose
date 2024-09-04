@@ -10,6 +10,7 @@ import com.b1nd.dodam.designsystem.tokens.ColorLightTokens
 data class DodamColors(
     val primaryNormal: Color,
     val primaryAssistive: Color,
+    val primaryAlternative: Color,
     val labelNormal: Color,
     val labelStrong: Color,
     val labelNeutral: Color,
@@ -36,6 +37,7 @@ data class DodamColors(
 internal fun lightDodamColors(
     primaryNormal: Color = ColorLightTokens.Primary.Normal,
     primaryDisabled: Color = ColorLightTokens.Primary.Assistive,
+    primaryAlternative: Color = ColorLightTokens.Primary.Alternative,
     labelNormal: Color = ColorLightTokens.Label.Normal,
     labelStrong: Color = ColorLightTokens.Label.Strong,
     labelNeutral: Color = ColorLightTokens.Label.Neutral,
@@ -60,6 +62,7 @@ internal fun lightDodamColors(
 ): DodamColors = DodamColors(
     primaryNormal = primaryNormal,
     primaryAssistive = primaryDisabled,
+    primaryAlternative = primaryAlternative,
     labelNormal = labelNormal,
     labelStrong = labelStrong,
     labelNeutral = labelNeutral,
@@ -86,6 +89,7 @@ internal fun lightDodamColors(
 internal fun darkDodamColors(
     primaryNormal: Color = ColorDarkTokens.Primary.Normal,
     primaryDisabled: Color = ColorDarkTokens.Primary.Assistive,
+    primaryAlternative: Color = ColorDarkTokens.Primary.Alternative,
     labelNormal: Color = ColorDarkTokens.Label.Normal,
     labelStrong: Color = ColorDarkTokens.Label.Strong,
     labelNeutral: Color = ColorDarkTokens.Label.Neutral,
@@ -110,6 +114,7 @@ internal fun darkDodamColors(
 ): DodamColors = DodamColors(
     primaryNormal = primaryNormal,
     primaryAssistive = primaryDisabled,
+    primaryAlternative = primaryAlternative,
     labelNormal = labelNormal,
     labelStrong = labelStrong,
     labelNeutral = labelNeutral,
