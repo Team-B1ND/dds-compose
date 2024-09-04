@@ -24,6 +24,7 @@ import com.b1nd.dodam.designsystem.resources.ic_megaphone
 import com.b1nd.dodam.designsystem.resources.ic_menu
 import com.b1nd.dodam.designsystem.resources.ic_moon_plus
 import com.b1nd.dodam.designsystem.resources.ic_note
+import com.b1nd.dodam.designsystem.resources.ic_person
 import com.b1nd.dodam.designsystem.resources.ic_plus
 import com.b1nd.dodam.designsystem.resources.ic_trash
 import com.b1nd.dodam.designsystem.resources.ic_xmark_circle
@@ -53,7 +54,8 @@ enum class DodamIcons {
     ChevronLeft,
     Trash,
     MagnifyingGlass,
-    Gear;
+    Gear,
+    Person;
 
     val value: ImageVector
         @Composable
@@ -83,5 +85,6 @@ enum class DodamIcons {
             Trash -> vectorResource(Res.drawable.ic_trash)
             MagnifyingGlass -> vectorResource(Res.drawable.ic_magnifyingglass)
             Gear -> vectorResource(Res.drawable.ic_gear)
+            Person -> vectorResource(Res.drawable.ic_person)
         }
 }
