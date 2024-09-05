@@ -3,7 +3,8 @@ package com.b1nd.dodam.designsystem.tokens
 internal object ColorLightTokens {
     object Primary {
         val Normal = PaletteTokens.Blue45
-        val Assistive = PaletteTokens.Blue45.copy(alpha = 0.3f)
+        val Assistive = PaletteTokens.Blue45.copy(alpha = 0.2f)
+        val Alternative = PaletteTokens.Blue45.copy(alpha = 0.65f)
     }
 
     object Label {
