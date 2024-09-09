@@ -80,7 +80,7 @@ mavenPublishing {
     coordinates(
         groupId = "com.b1nd.dodam",
         artifactId = "dodam-design-system",
-        version = "1.0.4"
+        version = "1.0.5"
     )
 
     pom {
