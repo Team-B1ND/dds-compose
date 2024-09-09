@@ -42,7 +42,9 @@ fun DodamDefaultTopAppBar(
         actionIcons = actionIcons,
     ) {
         Row(
-            modifier = Modifier.height(TopAppBarDefaults.MinimumContentHeight),
+            modifier = Modifier
+                .height(TopAppBarDefaults.MinimumContentHeight)
+                .padding(start = 4.dp),
             verticalAlignment = Alignment.CenterVertically,
         ) {
             Spacer(modifier = Modifier.width(TopAppBarDefaults.TitleStartSpacing))
