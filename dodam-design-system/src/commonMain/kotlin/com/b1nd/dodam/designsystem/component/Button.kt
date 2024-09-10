@@ -109,6 +109,7 @@ enum class ButtonRole {
     Primary,
     Secondary,
     Assistive,
+    Negative,
 }
 
 @Stable
@@ -153,6 +154,12 @@ private fun ButtonRole.buttonColors(): ButtonColors {
             containerColor = colors.fillNormal,
             contentColor = colors.labelNeutral,
         )
+        ButtonRole.Negative ->{
+            ButtonColors(
+                containerColor = colors.statusNegative,
+                contentColor = colors.staticWhite,
+            )
+        }
     }
 }
 
