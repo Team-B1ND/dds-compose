@@ -11,6 +11,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.DefaultAlpha
 import androidx.compose.ui.graphics.painter.Painter
@@ -41,7 +42,8 @@ fun DodamAvatar(
         is String, is ImageRequest -> {
             DodamAsyncAvatar(
                 modifier = modifier
-                    .size(avatarConfig.backgroundSize),
+                    .size(avatarConfig.backgroundSize)
+                    .clip(CircleShape),
                 model = model,
                 contentDescription = contentDescription,
                 colorFilter = colorFilter,
