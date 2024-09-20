@@ -15,7 +15,7 @@ import kotlinx.collections.immutable.toImmutableList
 
 @Composable
 @Preview
-private fun DodamBottomNavigationPreview() {
+private fun DodamNavigationBarPreview() {
     var selectedIndex by remember { mutableIntStateOf(0) }
     val icons = listOf(
         DodamIcons.Home,
