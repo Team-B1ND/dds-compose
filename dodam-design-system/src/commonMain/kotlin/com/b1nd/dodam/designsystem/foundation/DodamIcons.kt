@@ -12,6 +12,8 @@ import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle_filled
 import com.b1nd.dodam.designsystem.resources.ic_chevron_left
 import com.b1nd.dodam.designsystem.resources.ic_chevron_right
+import com.b1nd.dodam.designsystem.resources.ic_close_line
+import com.b1nd.dodam.designsystem.resources.ic_dev
 import com.b1nd.dodam.designsystem.resources.ic_door_open
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_eye
@@ -55,7 +57,9 @@ enum class DodamIcons {
     Trash,
     MagnifyingGlass,
     Gear,
-    Person;
+    Person,
+    Dev,
+    Close;
 
     val value: ImageVector
         @Composable
@@ -86,5 +90,7 @@ enum class DodamIcons {
             MagnifyingGlass -> vectorResource(Res.drawable.ic_magnifyingglass)
             Gear -> vectorResource(Res.drawable.ic_gear)
             Person -> vectorResource(Res.drawable.ic_person)
+            Dev -> vectorResource(Res.drawable.ic_dev)
+            Close -> vectorResource(Res.drawable.ic_close_line)
         }
 }
