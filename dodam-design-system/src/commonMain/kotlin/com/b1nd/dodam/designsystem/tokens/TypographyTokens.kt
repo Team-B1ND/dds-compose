@@ -1,7 +1,6 @@
 package com.b1nd.dodam.designsystem.tokens
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.em

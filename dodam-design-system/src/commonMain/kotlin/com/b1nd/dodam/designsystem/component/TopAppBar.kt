@@ -22,7 +22,6 @@ import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Stable
 enum class TopAppBarType {
