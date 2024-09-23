@@ -1,9 +1,7 @@
 package com.b1nd.dodam.designsystem.foundation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.TextStyle
 import com.b1nd.dodam.designsystem.tokens.TypographyTokens
