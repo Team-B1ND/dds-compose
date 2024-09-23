@@ -104,7 +104,7 @@ fun DodamTimePickerDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun DodamTimePickerBottomSheet(
+fun DodamTimePickerBottomSheet(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
