@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
 @Composable
