@@ -19,7 +19,6 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -29,9 +28,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,10 +37,7 @@ import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.b1nd.dodam.designsystem.DodamTheme
-import com.b1nd.dodam.designsystem.DodamTheme.colors
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun DodamTimePickerDialog(
@@ -104,7 +98,7 @@ fun DodamTimePickerDialog(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-internal fun DodamTimePickerBottomSheet(
+fun DodamTimePickerBottomSheet(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
