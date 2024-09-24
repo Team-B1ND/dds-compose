@@ -38,6 +38,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
@@ -56,6 +57,7 @@ fun DodamDatePickerDialog(
     title: String = "외출 일시",
     isFixedSize: Boolean = false,
     isValidDate: (date: CalendarDate) -> Boolean = { state.validDate(it) },
+    shape: Shape = DodamTheme.shapes.extraLarge,
     onDismissRequest: () -> Unit,
     onClickPrevMonth: () -> Unit = { state.prevMonth() },
     onClickNextMonth: () -> Unit = { state.nextMonth() },
@@ -67,7 +69,7 @@ fun DodamDatePickerDialog(
     ) {
         Surface(
             color = DodamDatePickerDefaults.ContainerColor,
-            shape = DodamTheme.shapes.extraLarge,
+            shape = shape,
         ) {
             Column(
                 modifier = Modifier
@@ -116,6 +118,7 @@ fun DodamDatePickerBottomSheet(
     title: String = "외출 일시",
     isFixedSize: Boolean = false,
     isValidDate: (date: CalendarDate) -> Boolean = { state.validDate(it) },
+    shape: Shape = DodamTheme.shapes.extraLarge,
     onDismissRequest: () -> Unit,
     onClickPrevMonth: () -> Unit = { state.prevMonth() },
     onClickNextMonth: () -> Unit = { state.nextMonth() },
@@ -157,7 +160,8 @@ fun DodamDatePickerBottomSheet(
                     buttonSize = ButtonSize.Large
                 )
             }
-        }
+        },
+        shape = shape
     )
 }
 
