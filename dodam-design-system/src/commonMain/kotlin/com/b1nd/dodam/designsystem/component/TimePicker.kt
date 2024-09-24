@@ -43,7 +43,7 @@ import kotlinx.collections.immutable.toImmutableList
 @Composable
 fun DodamTimePickerDialog(
     modifier: Modifier = Modifier,
-    startTime: Int = 1,
+    startTime: Int = 0,
     startMinute: Int = 0,
     titleText: String = "외출 일시",
     buttonText: String = "선택",
@@ -104,7 +104,7 @@ fun DodamTimePickerBottomSheet(
     modifier: Modifier = Modifier,
     onDismissRequest: () -> Unit,
     sheetState: SheetState = rememberModalBottomSheetState(),
-    startTime: Int = 1,
+    startTime: Int = 0,
     startMinute: Int = 0,
     titleText: String = "외출 일시",
     buttonText: String = "선택",
@@ -155,12 +155,12 @@ fun DodamTimePickerBottomSheet(
 @Composable
 internal fun DodamTimePicker(
     modifier: Modifier = Modifier,
-    startTime: Int = 1,
+    startTime: Int = 0,
     startMinute: Int = 0,
     onHourChanged: (Int) -> Unit,
     onMinChanged: (Int) -> Unit
 ) {
-    val hours = (1..23).toImmutableList()
+    val hours = (0..23).toImmutableList()
     val minutes = (0..59).toImmutableList()
 
     Box(modifier = modifier) {
@@ -186,7 +186,7 @@ internal fun DodamTimePicker(
             modifier = Modifier.align(Alignment.Center),
         ) {
             DodamWheelRangePicker(
-                startIndex = startTime - 1,
+                startIndex = startTime,
                 items = hours,
                 size = DpSize(36.dp, 199.dp),
                 onScrollFinished = {
