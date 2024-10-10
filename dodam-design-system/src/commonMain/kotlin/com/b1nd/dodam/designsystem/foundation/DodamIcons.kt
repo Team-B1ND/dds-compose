@@ -19,6 +19,7 @@ import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_eye
 import com.b1nd.dodam.designsystem.resources.ic_eye_slash
 import com.b1nd.dodam.designsystem.resources.ic_fork_and_knife
+import com.b1nd.dodam.designsystem.resources.ic_full_moon_face
 import com.b1nd.dodam.designsystem.resources.ic_gear
 import com.b1nd.dodam.designsystem.resources.ic_home
 import com.b1nd.dodam.designsystem.resources.ic_magnifyingglass
@@ -59,7 +60,8 @@ enum class DodamIcons {
     Gear,
     Person,
     Dev,
-    Close;
+    Close,
+    FullMoonFace;
 
     val value: ImageVector
         @Composable
@@ -92,5 +94,6 @@ enum class DodamIcons {
             Person -> vectorResource(Res.drawable.ic_person)
             Dev -> vectorResource(Res.drawable.ic_dev)
             Close -> vectorResource(Res.drawable.ic_close_line)
+            FullMoonFace -> vectorResource(Res.drawable.ic_full_moon_face)
         }
 }
