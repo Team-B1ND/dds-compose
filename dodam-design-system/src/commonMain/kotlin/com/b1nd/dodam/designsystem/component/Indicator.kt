@@ -55,7 +55,7 @@ fun DodamPageIndicator(
 
 @Composable
 fun DodamLinerProgressIndicator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @FloatRange(from = 0.0, to = 1.0) progress: Float,
     disabled: Boolean = false,
 ) {
@@ -86,7 +86,7 @@ fun DodamLinerProgressIndicator(
 
 @Composable
 fun DodamCircularProgressIndicator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @FloatRange(from = 0.0, to = 1.0) progress: Float,
     disabled: Boolean = false,
 ) {
