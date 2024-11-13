@@ -24,6 +24,10 @@ import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
 import com.b1nd.dodam.designsystem.internal.`if`
 
+sealed interface DodamAvatarBorder {
+    data object Default: DodamAvatarBorder
+    data class Border(val borderStroke: BorderStroke? = null): DodamAvatarBorder
+}
 
 @Composable
 fun DodamAvatar(
@@ -33,7 +37,7 @@ fun DodamAvatar(
     contentDescription: String? = null,
     colorFilter: ColorFilter? = null,
     alpha: Float = DefaultAlpha,
-    borderStroke: BorderStroke? = null,
+    border: DodamAvatarBorder = DodamAvatarBorder.Default,
     contentScale: ContentScale = ContentScale.Fit,
 ) {
 
@@ -45,12 +49,7 @@ fun DodamAvatar(
                 modifier = modifier
                     .size(avatarConfig.backgroundSize)
                     .clip(CircleShape)
-                    .`if`(borderStroke != null) {
-                        border(
-                            border = borderStroke!!,
-                            shape = CircleShape
-                        )
-                    },
+                    .border(border),
                 model = model,
                 contentDescription = contentDescription,
                 colorFilter = colorFilter,
@@ -66,12 +65,7 @@ fun DodamAvatar(
                         color = DodamTheme.colors.fillNormal,
                         shape = CircleShape
                     )
-                    .`if`(borderStroke != null) {
-                        border(
-                            border = borderStroke!!,
-                            shape = CircleShape
-                        )
-                    }
+                    .border(border)
 
             ) {
                 Image(
@@ -137,6 +131,16 @@ private fun AvatarSize.getAvatarConfig() =
         AvatarSize.XXL -> AvatarConfig(AvatarDefaults.XXLBackgroundSize, AvatarDefaults.XXLIconSize)
     }
 
+@Composable
+private fun Modifier.border(
+    border: DodamAvatarBorder
+) = when (border) {
+    is DodamAvatarBorder.Border -> this.border(
+        border = border.borderStroke?: BorderStroke(1.dp, DodamTheme.colors.lineAlternative),
+        shape = CircleShape
+    )
+    else -> this
+}
 private object AvatarDefaults {
     val ExtraSmallBackgroundSize = 16.dp
     val SmallBackgroundSize = 24.dp
