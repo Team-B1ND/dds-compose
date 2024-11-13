@@ -55,7 +55,7 @@ fun DodamPageIndicator(
 
 @Composable
 fun DodamLinerProgressIndicator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @FloatRange(from = 0.0, to = 1.0) progress: Float,
     disabled: Boolean = false,
 ) {
@@ -70,23 +70,25 @@ fun DodamLinerProgressIndicator(
                 shape = LinerProgressIndicatorDefault.DefaultShape
             )
     ) {
-        Box(
-            modifier = Modifier
-                .weight(progress)
-                .background(
-                    color = if (disabled) DodamTheme.colors.lineNormal
+        if (progress != 0f) {
+            Box(
+                modifier = Modifier
+                    .weight(progress)
+                    .background(
+                        color = if (disabled) DodamTheme.colors.lineNormal
                         else DodamTheme.colors.primaryNormal,
-                    shape = LinerProgressIndicatorDefault.DefaultShape
-                )
-                .fillMaxHeight()
-        )
-        Spacer(Modifier.weight(1f-progress))
+                        shape = LinerProgressIndicatorDefault.DefaultShape
+                    )
+                    .fillMaxHeight()
+            )
+            Spacer(Modifier.weight(1f - progress))
+        }
     }
 }
 
 @Composable
 fun DodamCircularProgressIndicator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     @FloatRange(from = 0.0, to = 1.0) progress: Float,
     disabled: Boolean = false,
 ) {
