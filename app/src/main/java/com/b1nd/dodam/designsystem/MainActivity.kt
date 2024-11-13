@@ -9,12 +9,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.component.AvatarSize
 import com.b1nd.dodam.designsystem.component.DodamAvatar
 import com.b1nd.dodam.designsystem.component.DodamCircularProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamLinerProgressIndicator
+import com.b1nd.dodam.designsystem.foundation.DodamIcons
 
 @ExperimentalMaterial3Api
 class MainActivity : ComponentActivity() {
@@ -34,6 +36,16 @@ class MainActivity : ComponentActivity() {
                     DodamLinerProgressIndicator(
                         modifier = Modifier.fillMaxWidth(),
                         progress = 0f
+                    )
+                    Icon(
+                        modifier = Modifier.size(50.dp),
+                        imageVector = DodamIcons.Pen.value,
+                        contentDescription = null
+                    )
+                    Icon(
+                        modifier = Modifier.size(50.dp),
+                        imageVector = DodamIcons.Chart.value,
+                        contentDescription = null
                     )
                 }
             }
