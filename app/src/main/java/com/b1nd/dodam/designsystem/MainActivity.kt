@@ -3,6 +3,7 @@ package com.b1nd.dodam.designsystem
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,6 +47,11 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.size(50.dp),
                         imageVector = DodamIcons.Chart.value,
                         contentDescription = null
+                    )
+                    DodamAvatar(
+                        model = null,
+                        avatarSize = AvatarSize.ExtraLarge,
+                        borderStroke = BorderStroke(1.dp, DodamTheme.colors.lineAlternative)
                     )
                 }
             }
