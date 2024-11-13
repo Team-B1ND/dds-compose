@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.component.AvatarSize
 import com.b1nd.dodam.designsystem.component.DodamAvatar
+import com.b1nd.dodam.designsystem.component.DodamAvatarBorder
 import com.b1nd.dodam.designsystem.component.DodamCircularProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamLinerProgressIndicator
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
@@ -51,7 +52,16 @@ class MainActivity : ComponentActivity() {
                     DodamAvatar(
                         model = null,
                         avatarSize = AvatarSize.ExtraLarge,
-                        borderStroke = BorderStroke(1.dp, DodamTheme.colors.lineAlternative)
+                    )
+                    DodamAvatar(
+                        model = null,
+                        avatarSize = AvatarSize.ExtraLarge,
+                        border = DodamAvatarBorder.Border()
+                    )
+                    DodamAvatar(
+                        model = null,
+                        avatarSize = AvatarSize.ExtraLarge,
+                        border = DodamAvatarBorder.Border(BorderStroke(3.dp, DodamTheme.colors.statusNegative))
                     )
                 }
             }
