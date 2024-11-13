@@ -1,7 +1,9 @@
 package com.b1nd.dodam.designsystem.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -20,6 +22,7 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
+import com.b1nd.dodam.designsystem.internal.`if`
 
 
 @Composable
@@ -30,6 +33,7 @@ fun DodamAvatar(
     contentDescription: String? = null,
     colorFilter: ColorFilter? = null,
     alpha: Float = DefaultAlpha,
+    borderStroke: BorderStroke? = null,
     contentScale: ContentScale = ContentScale.Fit,
 ) {
 
@@ -40,7 +44,13 @@ fun DodamAvatar(
             DodamAsyncAvatar(
                 modifier = modifier
                     .size(avatarConfig.backgroundSize)
-                    .clip(CircleShape),
+                    .clip(CircleShape)
+                    .`if`(borderStroke != null) {
+                        border(
+                            border = borderStroke!!,
+                            shape = CircleShape
+                        )
+                    },
                 model = model,
                 contentDescription = contentDescription,
                 colorFilter = colorFilter,
@@ -56,6 +66,13 @@ fun DodamAvatar(
                         color = DodamTheme.colors.fillNormal,
                         shape = CircleShape
                     )
+                    .`if`(borderStroke != null) {
+                        border(
+                            border = borderStroke!!,
+                            shape = CircleShape
+                        )
+                    }
+
             ) {
                 Image(
                     modifier = Modifier
@@ -79,7 +96,7 @@ private fun DodamAsyncAvatar(
     contentDescription: String?,
     colorFilter: ColorFilter?,
     alpha: Float,
-    contentScale: ContentScale
+    contentScale: ContentScale,
 ) {
     AsyncImage(
         modifier = modifier,
@@ -87,7 +104,7 @@ private fun DodamAsyncAvatar(
         contentDescription = contentDescription,
         colorFilter = colorFilter,
         alpha = alpha,
-        contentScale = contentScale
+        contentScale = contentScale,
     )
 }
 
