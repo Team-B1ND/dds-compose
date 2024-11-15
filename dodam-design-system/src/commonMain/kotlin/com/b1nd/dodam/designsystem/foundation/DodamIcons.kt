@@ -7,16 +7,20 @@ import com.b1nd.dodam.designsystem.resources.ic_arrow_left
 import com.b1nd.dodam.designsystem.resources.ic_bell
 import com.b1nd.dodam.designsystem.resources.ic_bus
 import com.b1nd.dodam.designsystem.resources.ic_calendar
+import com.b1nd.dodam.designsystem.resources.ic_chart
 import com.b1nd.dodam.designsystem.resources.ic_checkmark
 import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle_filled
 import com.b1nd.dodam.designsystem.resources.ic_chevron_left
 import com.b1nd.dodam.designsystem.resources.ic_chevron_right
+import com.b1nd.dodam.designsystem.resources.ic_close_line
+import com.b1nd.dodam.designsystem.resources.ic_dev
 import com.b1nd.dodam.designsystem.resources.ic_door_open
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_eye
 import com.b1nd.dodam.designsystem.resources.ic_eye_slash
 import com.b1nd.dodam.designsystem.resources.ic_fork_and_knife
+import com.b1nd.dodam.designsystem.resources.ic_full_moon_face
 import com.b1nd.dodam.designsystem.resources.ic_gear
 import com.b1nd.dodam.designsystem.resources.ic_home
 import com.b1nd.dodam.designsystem.resources.ic_magnifyingglass
@@ -24,6 +28,7 @@ import com.b1nd.dodam.designsystem.resources.ic_megaphone
 import com.b1nd.dodam.designsystem.resources.ic_menu
 import com.b1nd.dodam.designsystem.resources.ic_moon_plus
 import com.b1nd.dodam.designsystem.resources.ic_note
+import com.b1nd.dodam.designsystem.resources.ic_pen
 import com.b1nd.dodam.designsystem.resources.ic_person
 import com.b1nd.dodam.designsystem.resources.ic_plus
 import com.b1nd.dodam.designsystem.resources.ic_trash
@@ -55,7 +60,12 @@ enum class DodamIcons {
     Trash,
     MagnifyingGlass,
     Gear,
-    Person;
+    Person,
+    Dev,
+    Close,
+    FullMoonFace,
+    Pen,
+    Chart;
 
     val value: ImageVector
         @Composable
@@ -86,5 +96,10 @@ enum class DodamIcons {
             MagnifyingGlass -> vectorResource(Res.drawable.ic_magnifyingglass)
             Gear -> vectorResource(Res.drawable.ic_gear)
             Person -> vectorResource(Res.drawable.ic_person)
+            Dev -> vectorResource(Res.drawable.ic_dev)
+            Close -> vectorResource(Res.drawable.ic_close_line)
+            FullMoonFace -> vectorResource(Res.drawable.ic_full_moon_face)
+            Pen -> vectorResource(Res.drawable.ic_pen)
+            Chart -> vectorResource(Res.drawable.ic_chart)
         }
 }
