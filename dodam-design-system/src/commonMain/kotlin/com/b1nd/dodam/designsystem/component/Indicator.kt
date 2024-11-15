@@ -76,17 +76,22 @@ fun DodamLinerProgressIndicator(
                 shape = LinerProgressIndicatorDefault.DefaultShape
             )
     ) {
-        Box(
-            modifier = Modifier
-                .weight(progress)
-                .background(
-                    color = if (disabled) DodamTheme.colors.lineNormal
+        if (progress > 0f) {
+            Box(
+                modifier = Modifier
+                    .weight(progress)
+                    .background(
+                        color = if (disabled) DodamTheme.colors.lineNormal
                         else DodamTheme.colors.primaryNormal,
-                    shape = LinerProgressIndicatorDefault.DefaultShape
-                )
-                .fillMaxHeight()
-        )
-        Spacer(Modifier.weight(1f-progress))
+                        shape = LinerProgressIndicatorDefault.DefaultShape
+                    )
+                    .fillMaxHeight()
+            )
+        }
+
+        if (progress < 1f) {
+            Spacer(Modifier.weight(1f - progress))
+        }
     }
 }
 
