@@ -70,7 +70,7 @@ fun DodamLinerProgressIndicator(
                 shape = LinerProgressIndicatorDefault.DefaultShape
             )
     ) {
-        if (progress != 0f) {
+        if (progress > 0f) {
             Box(
                 modifier = Modifier
                     .weight(progress)
@@ -81,6 +81,9 @@ fun DodamLinerProgressIndicator(
                     )
                     .fillMaxHeight()
             )
+        }
+
+        if (progress < 1f) {
             Spacer(Modifier.weight(1f - progress))
         }
     }
