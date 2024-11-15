@@ -1,9 +1,10 @@
 package com.b1nd.dodam.designsystem.component
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
@@ -11,10 +12,9 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.DefaultAlpha
-import androidx.compose.ui.graphics.painter.Painter
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -22,7 +22,12 @@ import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
+import com.b1nd.dodam.designsystem.internal.`if`
 
+sealed interface DodamAvatarBorder {
+    data object Default: DodamAvatarBorder
+    data class Border(val borderStroke: BorderStroke? = null): DodamAvatarBorder
+}
 
 @Composable
 fun DodamAvatar(
@@ -32,6 +37,7 @@ fun DodamAvatar(
     contentDescription: String? = null,
     colorFilter: ColorFilter? = null,
     alpha: Float = DefaultAlpha,
+    border: DodamAvatarBorder = DodamAvatarBorder.Default,
     contentScale: ContentScale = ContentScale.Fit,
 ) {
 
@@ -41,7 +47,9 @@ fun DodamAvatar(
         is String, is ImageRequest -> {
             DodamAsyncAvatar(
                 modifier = modifier
-                    .size(avatarConfig.backgroundSize),
+                    .size(avatarConfig.backgroundSize)
+                    .clip(CircleShape)
+                    .border(border),
                 model = model,
                 contentDescription = contentDescription,
                 colorFilter = colorFilter,
@@ -57,6 +65,8 @@ fun DodamAvatar(
                         color = DodamTheme.colors.fillNormal,
                         shape = CircleShape
                     )
+                    .border(border)
+
             ) {
                 Image(
                     modifier = Modifier
@@ -80,7 +90,7 @@ private fun DodamAsyncAvatar(
     contentDescription: String?,
     colorFilter: ColorFilter?,
     alpha: Float,
-    contentScale: ContentScale
+    contentScale: ContentScale,
 ) {
     AsyncImage(
         modifier = modifier,
@@ -88,7 +98,7 @@ private fun DodamAsyncAvatar(
         contentDescription = contentDescription,
         colorFilter = colorFilter,
         alpha = alpha,
-        contentScale = contentScale
+        contentScale = contentScale,
     )
 }
 
@@ -121,6 +131,16 @@ private fun AvatarSize.getAvatarConfig() =
         AvatarSize.XXL -> AvatarConfig(AvatarDefaults.XXLBackgroundSize, AvatarDefaults.XXLIconSize)
     }
 
+@Composable
+private fun Modifier.border(
+    border: DodamAvatarBorder
+) = when (border) {
+    is DodamAvatarBorder.Border -> this.border(
+        border = border.borderStroke?: BorderStroke(1.dp, DodamTheme.colors.lineAlternative),
+        shape = CircleShape
+    )
+    else -> this
+}
 private object AvatarDefaults {
     val ExtraSmallBackgroundSize = 16.dp
     val SmallBackgroundSize = 24.dp

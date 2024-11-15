@@ -2,18 +2,11 @@ package com.b1nd.dodam.designsystem
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Shapes
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import com.b1nd.dodam.designsystem.animation.rememberBounceIndication
 import com.b1nd.dodam.designsystem.foundation.DodamColors
-import com.b1nd.dodam.designsystem.foundation.DodamIcons
 import com.b1nd.dodam.designsystem.foundation.DodamShapes
 import com.b1nd.dodam.designsystem.foundation.DodamTypography
 import com.b1nd.dodam.designsystem.foundation.LocalDodamColors
