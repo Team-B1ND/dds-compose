@@ -7,7 +7,6 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.ptr
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.datetime.Clock
 import kotlinx.datetime.DateTimeUnit
 import kotlinx.datetime.Instant
 import kotlinx.datetime.LocalDate
@@ -21,15 +20,11 @@ import kotlinx.datetime.toInstant
 import kotlinx.datetime.toKotlinInstant
 import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.until
-import org.jetbrains.skia.skottie.LogLevel
-import org.jetbrains.skia.skottie.Logger
 import platform.Foundation.NSCalendar
 import platform.Foundation.NSDate
-import platform.Foundation.NSDateFormatter
 import platform.Foundation.NSLocale
 import platform.Foundation.currentLocale
 import platform.Foundation.now
-import platform.Foundation.systemLocale
 import platform.darwin.OS_LOG_DEFAULT
 import platform.darwin.OS_LOG_TYPE_INFO
 import platform.darwin.__dso_handle

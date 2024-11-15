@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.defaultMinSize
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CornerBasedShape
@@ -25,7 +24,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -109,6 +107,7 @@ enum class ButtonRole {
     Primary,
     Secondary,
     Assistive,
+    Negative,
 }
 
 @Stable
@@ -153,6 +152,12 @@ private fun ButtonRole.buttonColors(): ButtonColors {
             containerColor = colors.fillNormal,
             contentColor = colors.labelNeutral,
         )
+        ButtonRole.Negative ->{
+            ButtonColors(
+                containerColor = colors.statusNegative,
+                contentColor = colors.staticWhite,
+            )
+        }
     }
 }
 
