@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
@@ -22,6 +23,8 @@ import com.b1nd.dodam.designsystem.foundation.DodamIcons
 fun DodamEmpty(
     modifier: Modifier = Modifier,
     onClick: () -> Unit,
+    imageVector: ImageVector = DodamIcons.FullMoonFace.value,
+    contentDescription: String = "달이 웃는 표정",
     title: String,
     buttonText: String,
     border: BorderStroke? = null
@@ -38,8 +41,8 @@ fun DodamEmpty(
         ) {
             Image(
                 modifier = Modifier.size(36.dp),
-                imageVector = DodamIcons.FullMoonFace.value,
-                contentDescription = "달이 웃는 표정"
+                imageVector = imageVector,
+                contentDescription = contentDescription
             )
             Spacer(modifier = Modifier.height(12.dp))
             Text(
