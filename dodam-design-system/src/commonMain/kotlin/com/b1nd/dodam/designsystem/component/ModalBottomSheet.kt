@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -21,6 +22,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.DodamTheme
+import kotlinx.serialization.json.JsonNull.content
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -29,6 +31,15 @@ fun DodamModalBottomSheet(
     modifier: Modifier = Modifier,
     title: @Composable ColumnScope.() -> Unit,
     content: @Composable ColumnScope.() -> Unit,
+    titlePaddingValues: PaddingValues = PaddingValues(
+        top = 16.dp,
+        bottom = 16.dp
+    ),
+    contentPaddingValues: PaddingValues = PaddingValues(
+        start = 16.dp,
+        end = 16.dp,
+        bottom = 16.dp
+    ),
     containerColor: Color = DodamTheme.colors.backgroundNormal,
     shape: Shape = DodamTheme.shapes.extraLarge,
     space: Dp = 4.dp,
@@ -42,10 +53,7 @@ fun DodamModalBottomSheet(
         shape = shape,
         dragHandle = {
             Surface(
-                modifier = Modifier.padding(
-                    top = 24.dp,
-                    bottom = 16.dp
-                ),
+                modifier = Modifier.padding(titlePaddingValues),
             ) {
                 Box(
                     modifier = Modifier
@@ -60,12 +68,7 @@ fun DodamModalBottomSheet(
         },
         content = {
             Column(
-                modifier = Modifier
-                    .padding(
-                        start = 24.dp,
-                        end = 24.dp,
-                        bottom = 24.dp
-                    )
+                modifier = Modifier.padding(contentPaddingValues)
             ) {
                 title()
                 Spacer(modifier = Modifier.height(space))
