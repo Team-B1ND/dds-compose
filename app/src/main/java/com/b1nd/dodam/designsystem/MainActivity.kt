@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,6 +18,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.component.AvatarSize
@@ -34,7 +38,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             var value by remember { mutableStateOf("testValueqwewqjeoqw\nqwe\n\n\n\n\nqeqwe") }
-            var textFieldValue by remember { mutableStateOf(TextFieldValue("qwe\nqwe\nqwe\nqwe\nqwe\nqwe\nqwe\nqwe")) }
+            var textFieldValue by remember { mutableStateOf(TextFieldValue("")) }
+            val focusRequester = remember { FocusRequester() }
             DodamTheme {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -55,11 +60,20 @@ class MainActivity : ComponentActivity() {
 //                    )
 
                     DodamTextField(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier
+                            .weight(1f)
+                            .pointerInput(Unit) {
+                                this.detectTapGestures(
+                                    onTap = {
+                                        focusRequester.requestFocus()
+                                    }
+                                )
+                            },
                         value = textFieldValue,
                         onValueChange = {
                             textFieldValue = it
                         },
+                        focusRequester = focusRequester,
                         isShowDivider = false
                     )
 //                    DodamFilledTextField(
