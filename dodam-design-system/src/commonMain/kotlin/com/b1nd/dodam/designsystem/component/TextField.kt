@@ -71,6 +71,7 @@ fun DodamTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    focusRequester: FocusRequester = remember { FocusRequester() },
     isShowDivider: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -82,7 +83,6 @@ fun DodamTextField(
     cursorBrush: Brush = SolidColor(Color.Black),
     onClickRemoveRequest: () -> Unit = {},
 ) {
-    val focusRequester by remember { mutableStateOf(FocusRequester()) }
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
@@ -282,6 +282,7 @@ fun DodamTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    focusRequester: FocusRequester = remember { FocusRequester() },
     isShowDivider: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
@@ -293,7 +294,6 @@ fun DodamTextField(
     cursorBrush: Brush = SolidColor(Color.Black),
     onClickRemoveRequest: () -> Unit = {},
 ) {
-    val focusRequester by remember { mutableStateOf(FocusRequester()) }
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
@@ -493,6 +493,7 @@ fun DodamFilledTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    focusRequester: FocusRequester = remember { FocusRequester() },
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
@@ -503,7 +504,6 @@ fun DodamFilledTextField(
     cursorBrush: Brush = SolidColor(Color.Black),
     onClickRemoveRequest: () -> Unit = {},
 ) {
-    val focusRequester by remember { mutableStateOf(FocusRequester()) }
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
@@ -689,6 +689,7 @@ fun DodamFilledTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    focusRequester: FocusRequester = remember { FocusRequester() },
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
@@ -699,7 +700,6 @@ fun DodamFilledTextField(
     cursorBrush: Brush = SolidColor(Color.Black),
     onClickRemoveRequest: () -> Unit = {},
 ) {
-    val focusRequester by remember { mutableStateOf(FocusRequester()) }
     var isFocus by remember { mutableStateOf(false) }
     val density = LocalDensity.current
 
