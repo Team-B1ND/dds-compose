@@ -26,42 +26,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             DodamTheme {
-                Column(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    DodamCircularProgressIndicator(
-                        modifier = Modifier
-                            .padding(horizontal = 20.dp)
-                            .size(40.dp),
-                        progress = 0f
-                    )
-                    DodamLinerProgressIndicator(
-                        modifier = Modifier.fillMaxWidth(),
-                        progress = 0f
-                    )
+                Column {
                     Icon(
-                        modifier = Modifier.size(50.dp),
-                        imageVector = DodamIcons.Pen.value,
+                        modifier = Modifier.size(40.dp),
+                        imageVector = DodamIcons.File.value,
                         contentDescription = null
                     )
                     Icon(
-                        modifier = Modifier.size(50.dp),
-                        imageVector = DodamIcons.Chart.value,
+                        modifier = Modifier.size(40.dp),
+                        imageVector = DodamIcons.Photo.value,
                         contentDescription = null
-                    )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                    )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                        border = DodamAvatarBorder.Border()
-                    )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                        border = DodamAvatarBorder.Border(BorderStroke(3.dp, DodamTheme.colors.statusNegative))
                     )
                 }
             }
