@@ -40,33 +40,34 @@ class MainActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     DodamTextField(
+                        modifier = Modifier.weight(1f),
                         value = value,
                         onValueChange = {
                             value = it
                         }
                     )
 
-                    DodamFilledTextField(
-                        value = value,
-                        onValueChange = {
-                            value = it
-                        }
-                    )
+//                    DodamFilledTextField(
+//                        value = value,
+//                        onValueChange = {
+//                            value = it
+//                        }
+//                    )
 
                     DodamTextField(
+                        modifier = Modifier.weight(1f),
                         value = textFieldValue,
                         onValueChange = {
                             textFieldValue = it
-                        }
+                        },
+                        isShowDivider = false
                     )
-                    DodamFilledTextField(
-                        value = textFieldValue,
-                        onValueChange = {
-                            textFieldValue = it
-                        }
-                    )
-
-
+//                    DodamFilledTextField(
+//                        value = textFieldValue,
+//                        onValueChange = {
+//                            textFieldValue = it
+//                        }
+//                    )
                 }
             }
         }

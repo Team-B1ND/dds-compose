@@ -71,6 +71,7 @@ fun DodamTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    isShowDivider: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
@@ -248,13 +249,15 @@ fun DodamTextField(
                 }
             }
         }
-        Box(
-            modifier
-                .align(Alignment.BottomStart)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(animateStrokeColor)
-        )
+        if (isShowDivider) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .fillMaxWidth()
+                    .height(1.dp)
+                    .background(animateStrokeColor)
+            )
+        }
         if (supportText.isNotEmpty()) {
             Text(
                 modifier = Modifier
@@ -279,6 +282,7 @@ fun DodamTextField(
     supportText: String = "",
     isError: Boolean = false,
     enabled: Boolean = true,
+    isShowDivider: Boolean = true,
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     singleLine: Boolean = false,
@@ -456,13 +460,15 @@ fun DodamTextField(
                 }
             }
         }
-        Box(
-            modifier
-                .align(Alignment.BottomStart)
-                .fillMaxWidth()
-                .height(1.dp)
-                .background(animateStrokeColor)
-        )
+        if (isShowDivider) {
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+                    .fillMaxWidth()
+                    .height(1.dp)
+                    .background(animateStrokeColor)
+            )
+        }
         if (supportText.isNotEmpty()) {
             Text(
                 modifier = Modifier
