@@ -19,6 +19,7 @@ import com.b1nd.dodam.designsystem.resources.ic_door_open
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_eye
 import com.b1nd.dodam.designsystem.resources.ic_eye_slash
+import com.b1nd.dodam.designsystem.resources.ic_file
 import com.b1nd.dodam.designsystem.resources.ic_fork_and_knife
 import com.b1nd.dodam.designsystem.resources.ic_full_moon_face
 import com.b1nd.dodam.designsystem.resources.ic_gear
@@ -30,6 +31,7 @@ import com.b1nd.dodam.designsystem.resources.ic_moon_plus
 import com.b1nd.dodam.designsystem.resources.ic_note
 import com.b1nd.dodam.designsystem.resources.ic_pen
 import com.b1nd.dodam.designsystem.resources.ic_person
+import com.b1nd.dodam.designsystem.resources.ic_photo
 import com.b1nd.dodam.designsystem.resources.ic_plus
 import com.b1nd.dodam.designsystem.resources.ic_trash
 import com.b1nd.dodam.designsystem.resources.ic_xmark_circle
@@ -65,12 +67,13 @@ enum class DodamIcons {
     Close,
     FullMoonFace,
     Pen,
-    Chart;
+    Chart,
+    File,
+    Photo;
 
     val value: ImageVector
         @Composable
         get() = when (this) {
-
             Home -> vectorResource(Res.drawable.ic_home)
             ForkAndKnife -> vectorResource(Res.drawable.ic_fork_and_knife)
             DoorOpen -> vectorResource(Res.drawable.ic_door_open)
@@ -101,5 +104,7 @@ enum class DodamIcons {
             FullMoonFace -> vectorResource(Res.drawable.ic_full_moon_face)
             Pen -> vectorResource(Res.drawable.ic_pen)
             Chart -> vectorResource(Res.drawable.ic_chart)
+            File -> vectorResource(Res.drawable.ic_file)
+            Photo -> vectorResource(Res.drawable.ic_photo)
         }
 }
