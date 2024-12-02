@@ -218,7 +218,8 @@ fun DodamTextField(
 
                     Box(
                         modifier = Modifier
-                            .align(Alignment.CenterVertically)
+                            .align(Alignment.Top)
+                            .padding(top = 8.dp)
                             .size(32.dp)
                             .clickable(
                                 onClick = onClickRemoveRequest,
@@ -425,7 +426,8 @@ fun DodamTextField(
 
                     Box(
                         modifier = Modifier
-                            .align(Alignment.CenterVertically)
+                            .align(Alignment.Top)
+                            .padding(top = 8.dp)
                             .size(32.dp)
                             .clickable(
                                 onClick = onClickRemoveRequest,
@@ -622,7 +624,8 @@ fun DodamFilledTextField(
 
                             Box(
                                 modifier = Modifier
-                                    .align(Alignment.CenterVertically)
+                                    .align(Alignment.Top)
+                                    .padding(top = 8.dp)
                                     .size(32.dp)
                                     .padding(
                                         end = 12.dp
@@ -817,7 +820,10 @@ fun DodamFilledTextField(
 
                             Box(
                                 modifier = Modifier
-                                    .align(Alignment.CenterVertically)
+                                    .align(Alignment.Top)
+                                    .padding(
+                                        top = 8.dp
+                                    )
                                     .size(32.dp)
                                     .padding(
                                         end = 12.dp

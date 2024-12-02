@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,13 +12,20 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.b1nd.dodam.designsystem.component.AvatarSize
 import com.b1nd.dodam.designsystem.component.DodamAvatar
 import com.b1nd.dodam.designsystem.component.DodamAvatarBorder
 import com.b1nd.dodam.designsystem.component.DodamCircularProgressIndicator
+import com.b1nd.dodam.designsystem.component.DodamFilledTextField
 import com.b1nd.dodam.designsystem.component.DodamLinerProgressIndicator
+import com.b1nd.dodam.designsystem.component.DodamTextField
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
 
 @ExperimentalMaterial3Api
@@ -25,44 +33,40 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            var value by remember { mutableStateOf("testValueqwewqjeoqw\nqwe\n\n\n\n\nqeqwe") }
+            var textFieldValue by remember { mutableStateOf(TextFieldValue("qwe\nqwe\nqwe\nqwe\nqwe\nqwe\nqwe\nqwe")) }
             DodamTheme {
                 Column(
-                    modifier = Modifier.fillMaxSize()
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
-                    DodamCircularProgressIndicator(
-                        modifier = Modifier
-                            .padding(horizontal = 20.dp)
-                            .size(40.dp),
-                        progress = 0f
+                    DodamTextField(
+                        value = value,
+                        onValueChange = {
+                            value = it
+                        }
                     )
-                    DodamLinerProgressIndicator(
-                        modifier = Modifier.fillMaxWidth(),
-                        progress = 0f
+
+                    DodamFilledTextField(
+                        value = value,
+                        onValueChange = {
+                            value = it
+                        }
                     )
-                    Icon(
-                        modifier = Modifier.size(50.dp),
-                        imageVector = DodamIcons.Pen.value,
-                        contentDescription = null
+
+                    DodamTextField(
+                        value = textFieldValue,
+                        onValueChange = {
+                            textFieldValue = it
+                        }
                     )
-                    Icon(
-                        modifier = Modifier.size(50.dp),
-                        imageVector = DodamIcons.Chart.value,
-                        contentDescription = null
+                    DodamFilledTextField(
+                        value = textFieldValue,
+                        onValueChange = {
+                            textFieldValue = it
+                        }
                     )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                    )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                        border = DodamAvatarBorder.Border()
-                    )
-                    DodamAvatar(
-                        model = null,
-                        avatarSize = AvatarSize.ExtraLarge,
-                        border = DodamAvatarBorder.Border(BorderStroke(3.dp, DodamTheme.colors.statusNegative))
-                    )
+
+
                 }
             }
         }
