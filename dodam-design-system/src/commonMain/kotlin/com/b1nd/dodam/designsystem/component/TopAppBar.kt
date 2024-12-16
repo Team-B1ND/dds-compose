@@ -16,6 +16,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.Stable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.fastForEach
 import com.b1nd.dodam.designsystem.DodamTheme
@@ -77,8 +78,10 @@ fun DodamTopAppBar(
                         icon = DodamIcons.ArrowLeft,
                         type = IconButtonType.Strong,
                     )
-                    Spacer(modifier = Modifier.height(40.dp))
-                    Row {
+                    Row(
+                        modifier = Modifier.height(80.dp),
+                        verticalAlignment = Alignment.Bottom
+                    ) {
                         Spacer(modifier = Modifier.width(TopAppBarDefaults.TitleStartSpacing))
                         Text(
                             text = title,
