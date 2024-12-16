@@ -30,6 +30,8 @@ import com.b1nd.dodam.designsystem.component.DodamCircularProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamFilledTextField
 import com.b1nd.dodam.designsystem.component.DodamLinerProgressIndicator
 import com.b1nd.dodam.designsystem.component.DodamTextField
+import com.b1nd.dodam.designsystem.component.DodamTopAppBar
+import com.b1nd.dodam.designsystem.component.TopAppBarType
 import com.b1nd.dodam.designsystem.foundation.DodamIcons
 
 @ExperimentalMaterial3Api
@@ -44,6 +46,12 @@ class MainActivity : ComponentActivity() {
                 Column(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
+                    DodamTopAppBar(
+                        title = "‘B1ND’ 그룹\n" +
+                                "가입 신청 대기 중인 멤버",
+                        onBackClick = {},
+                        type = TopAppBarType.Large
+                    )
                     DodamTextField(
                         modifier = Modifier.weight(1f),
                         value = value,
