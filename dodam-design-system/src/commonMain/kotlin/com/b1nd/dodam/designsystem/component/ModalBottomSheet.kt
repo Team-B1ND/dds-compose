@@ -54,6 +54,7 @@ fun DodamModalBottomSheet(
         dragHandle = {
             Surface(
                 modifier = Modifier.padding(titlePaddingValues),
+                color = containerColor
             ) {
                 Box(
                     modifier = Modifier
