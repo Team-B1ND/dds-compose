@@ -14,6 +14,7 @@ import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle_filled
 import com.b1nd.dodam.designsystem.resources.ic_chevron_left
 import com.b1nd.dodam.designsystem.resources.ic_chevron_right
 import com.b1nd.dodam.designsystem.resources.ic_close_line
+import com.b1nd.dodam.designsystem.resources.ic_crown
 import com.b1nd.dodam.designsystem.resources.ic_dev
 import com.b1nd.dodam.designsystem.resources.ic_door_open
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
@@ -33,6 +34,7 @@ import com.b1nd.dodam.designsystem.resources.ic_pen
 import com.b1nd.dodam.designsystem.resources.ic_person
 import com.b1nd.dodam.designsystem.resources.ic_photo
 import com.b1nd.dodam.designsystem.resources.ic_plus
+import com.b1nd.dodam.designsystem.resources.ic_silhouette
 import com.b1nd.dodam.designsystem.resources.ic_trash
 import com.b1nd.dodam.designsystem.resources.ic_xmark_circle
 import org.jetbrains.compose.resources.vectorResource
@@ -69,7 +71,9 @@ enum class DodamIcons {
     Pen,
     Chart,
     File,
-    Photo;
+    Photo,
+    Crown,
+    Silhouette;
 
     val value: ImageVector
         @Composable
@@ -106,5 +110,7 @@ enum class DodamIcons {
             Chart -> vectorResource(Res.drawable.ic_chart)
             File -> vectorResource(Res.drawable.ic_file)
             Photo -> vectorResource(Res.drawable.ic_photo)
+            Crown -> vectorResource(Res.drawable.ic_crown)
+            Silhouette -> vectorResource(Res.drawable.ic_silhouette)
         }
 }
