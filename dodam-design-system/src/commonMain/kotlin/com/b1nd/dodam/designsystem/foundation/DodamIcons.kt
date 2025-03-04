@@ -14,6 +14,7 @@ import com.b1nd.dodam.designsystem.resources.ic_checkmark_circle_filled
 import com.b1nd.dodam.designsystem.resources.ic_chevron_left
 import com.b1nd.dodam.designsystem.resources.ic_chevron_right
 import com.b1nd.dodam.designsystem.resources.ic_close_line
+import com.b1nd.dodam.designsystem.resources.ic_colored_clock
 import com.b1nd.dodam.designsystem.resources.ic_crown
 import com.b1nd.dodam.designsystem.resources.ic_dev
 import com.b1nd.dodam.designsystem.resources.ic_door_open
@@ -73,7 +74,8 @@ enum class DodamIcons {
     File,
     Photo,
     Crown,
-    Silhouette;
+    Silhouette,
+    Clock;
 
     val value: ImageVector
         @Composable
@@ -112,5 +114,6 @@ enum class DodamIcons {
             Photo -> vectorResource(Res.drawable.ic_photo)
             Crown -> vectorResource(Res.drawable.ic_crown)
             Silhouette -> vectorResource(Res.drawable.ic_silhouette)
+            Clock -> vectorResource(Res.drawable.ic_colored_clock)
         }
 }
