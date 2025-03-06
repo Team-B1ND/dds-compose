@@ -9,4 +9,5 @@ object ShapeTokens {
     val Medium = RoundedCornerShape(12.dp)
     val Large = RoundedCornerShape(18.dp)
     val ExtraLarge = RoundedCornerShape(28.dp)
+    val ExtraLargeTopRound = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 }
