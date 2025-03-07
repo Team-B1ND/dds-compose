@@ -41,7 +41,7 @@ fun DodamModalBottomSheet(
         bottom = 16.dp
     ),
     containerColor: Color = DodamTheme.colors.backgroundNormal,
-    shape: Shape = DodamTheme.shapes.extraLargeTopRound,
+    shape: Shape = DodamTheme.shapes.extraLarge,
     space: Dp = 4.dp,
     sheetState: SheetState = rememberModalBottomSheetState(),
 ) {

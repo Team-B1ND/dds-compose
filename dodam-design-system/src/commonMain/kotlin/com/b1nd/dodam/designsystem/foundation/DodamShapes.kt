@@ -12,7 +12,6 @@ data class DodamShapes(
     val medium: CornerBasedShape = ShapeTokens.Medium,
     val large: CornerBasedShape = ShapeTokens.Large,
     val extraLarge: CornerBasedShape = ShapeTokens.ExtraLarge,
-    val extraLargeTopRound: CornerBasedShape = ShapeTokens.ExtraLargeTopRound
 )
 
 internal val LocalDodamShapes = staticCompositionLocalOf { DodamShapes() }
