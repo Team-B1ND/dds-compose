@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.SheetState
@@ -41,7 +42,7 @@ fun DodamModalBottomSheet(
         bottom = 16.dp
     ),
     containerColor: Color = DodamTheme.colors.backgroundNormal,
-    shape: Shape = DodamTheme.shapes.extraLarge,
+    shape: Shape = DodamTheme.shapes.extraLarge.copy(bottomEnd = ZeroCornerSize, bottomStart = ZeroCornerSize),
     space: Dp = 4.dp,
     sheetState: SheetState = rememberModalBottomSheetState(),
 ) {

@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/version-1.5.0-blue)
+![version](https://img.shields.io/badge/version-1.6.0-blue)
 
 ## How to use?
 in your project
