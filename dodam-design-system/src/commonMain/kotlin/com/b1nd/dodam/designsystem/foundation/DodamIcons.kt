@@ -20,6 +20,7 @@ import com.b1nd.dodam.designsystem.resources.ic_colored_xmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_crown
 import com.b1nd.dodam.designsystem.resources.ic_dev
 import com.b1nd.dodam.designsystem.resources.ic_door_open
+import com.b1nd.dodam.designsystem.resources.ic_download
 import com.b1nd.dodam.designsystem.resources.ic_exclamationmark_circle
 import com.b1nd.dodam.designsystem.resources.ic_eye
 import com.b1nd.dodam.designsystem.resources.ic_eye_slash
@@ -79,7 +80,8 @@ enum class DodamIcons {
     ColorXMark,
     ColorCheckMark,
     Silhouette,
-    Clock;
+    Clock,
+    Download;
 
     val value: ImageVector
         @Composable
@@ -121,5 +123,6 @@ enum class DodamIcons {
             Clock -> vectorResource(Res.drawable.ic_colored_clock)
             ColorXMark -> vectorResource(Res.drawable.ic_colored_xmark_circle)
             ColorCheckMark -> vectorResource(Res.drawable.ic_colored_checkmark_circle_filled)
+            Download -> vectorResource(Res.drawable.ic_download)
         }
 }
