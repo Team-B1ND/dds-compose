@@ -28,6 +28,7 @@ import com.b1nd.dodam.designsystem.resources.ic_file
 import com.b1nd.dodam.designsystem.resources.ic_fork_and_knife
 import com.b1nd.dodam.designsystem.resources.ic_full_moon_face
 import com.b1nd.dodam.designsystem.resources.ic_gear
+import com.b1nd.dodam.designsystem.resources.ic_globe
 import com.b1nd.dodam.designsystem.resources.ic_home
 import com.b1nd.dodam.designsystem.resources.ic_magnifyingglass
 import com.b1nd.dodam.designsystem.resources.ic_megaphone
@@ -81,7 +82,8 @@ enum class DodamIcons {
     ColorCheckMark,
     Silhouette,
     Clock,
-    Download;
+    Download,
+    Globe;
 
     val value: ImageVector
         @Composable
@@ -124,5 +126,6 @@ enum class DodamIcons {
             ColorXMark -> vectorResource(Res.drawable.ic_colored_xmark_circle)
             ColorCheckMark -> vectorResource(Res.drawable.ic_colored_checkmark_circle_filled)
             Download -> vectorResource(Res.drawable.ic_download)
+            Globe -> vectorResource(Res.drawable.ic_globe)
         }
 }
